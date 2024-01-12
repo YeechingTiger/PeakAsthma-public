@@ -1,0 +1,81 @@
+@mixin peak-modal-content {
+  font-size: 20px;
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  border-radius: 10px;
+
+  .modal-header {
+    border-radius: 10px 10px 0 0;
+    color: white;
+    text-align: center;
+    background-color: $brand-primary;
+    padding: 20px;
+  }
+
+  .modal-body {
+    background-color: #fff;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 15px 5px;
+
+    &__message {
+      font-size: 18px;
+      text-align: center;
+      margin: 15px;
+    }
+
+    .btn {
+      font-size: 16px;
+      margin: 15px;
+
+      &.btn-default {
+        color: #999;
+      }
+    }
+  }
+
+  .modal-footer {
+    border: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+
+    .btn {
+      border: 0px;
+      border-radius: 0;
+      color: $brand-secondary;
+      flex: 1;
+      font-size: 20px;
+      height: auto;
+      margin: 0;
+      padding: 15px 0 15px 0;
+      background-color: white;
+      &:first-child {
+        border-bottom-left-radius: 10px;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 10px;
+      }
+
+      +.btn {
+        border-left: 1px solid #ccc;
+      }
+    }
+  }
+
+  .modal-footer:after, .modal-footer:before {
+    content: ' ';
+    display: block;
+  }
+}
+
+.modal-footer:after, .modal-footer:before {
+  content: " ";
+  display: block;
+}

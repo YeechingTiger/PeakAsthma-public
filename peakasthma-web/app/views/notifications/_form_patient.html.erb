@@ -1,0 +1,19 @@
+<h4>Schedule Notification</h4>
+<%= simple_form_for [@patient, @notification] do |f| %>
+  <%= f.input :tip_flag, :as => :select, 
+            :collection => [['Normal Message', FALSE],['Tip',TRUE]], 
+            :include_blank => false, 
+            :label => "Message Type", input_html: { data: { 'dynamic-view-control': '#notification-field-s' } } %>
+  <div id="notification-field-s" data-dynamic-view="true" data-dynamic-view-url="<%= fields_notifications_path %>">
+      <%= render partial: 'fields', locals: {type: notification.tip_flag} %>
+  </div>
+  <%= f.input :send_at, as: :hidden, html5: true %>
+  <%= f.simple_fields_for :datetime do |nf| %>
+    <%= nf.input :send_at, as: :datetime, html5: true %>
+  <% end %>
+  <div class="notification_hide_time">
+    <%= f.input :alert, :input_html => { :value => 10 } %>
+    <%= f.input :target_patient, :input_html => { :value => @patient.id } %>
+  </div>
+  <%= f.button :submit, class: 'btn-primary' %>
+<% end %>

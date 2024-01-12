@@ -1,0 +1,28 @@
+@mixin mobile-asthma-table {
+  .table {
+    font-size: 11px;
+    margin-bottom: 0;
+
+    thead {
+      text-transform: uppercase;
+
+      tr {
+        background-color: #FAFBFD;
+        color: #A7ADBE;
+
+        th {
+          border-top: 2px solid #ddd;
+        }
+      }
+    }
+
+    tbody {
+      font-weight: bold;
+
+      td {
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
+}

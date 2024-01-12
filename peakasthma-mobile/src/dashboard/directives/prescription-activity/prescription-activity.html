@@ -1,0 +1,15 @@
+<div class="activity-history-record">
+  <div class="activity-history-record__icon-cell">
+    <span class="activity-history-record__icon activity-history-record__icon--primary ion-medkit" 
+          ng-class="colorMap[activity.takenPrescriptionRecord.prescription.levels.split(',')[0].toLowerCase()]"></span>
+    <p>{{ activity.takenPrescriptionRecord.prescription.levels.split(',')[0].toLowerCase() }}</p>
+  </div>
+  <div class="activity-history-record__content">
+    <div class="activity-history-record__date">
+      {{ activity.takenPrescriptionRecord.created | date: 'MM-dd-yyyy - hh:mm a' }}
+    </div>
+    <div class="activity-history-record__message" translate translate-values="{ medication: activity.takenPrescriptionRecord.prescription.medication.name, dosage: activity.takenPrescriptionRecord.prescription.dosage }">
+      dashboard.activityHistory.takenPrescriptionRecord.nameAndDosage
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+.green-zone-modal {
+  @include peak-modal-content;
+  
+  .modal-header {
+    background-color: $brand-tertiary;
+  }
+}

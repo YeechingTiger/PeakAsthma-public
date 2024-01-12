@@ -1,0 +1,38 @@
+<div class="peak-flow-table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="peak-flow-table__level">
+          <%= t('patient.views.reports.create_at') %>
+        </th>
+        <th>
+          <%= t('patient.views.reports.action.action') %>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <% if reports&.any? %>
+      <tbody>
+        <% reports.each do |report| %>
+          <tr>
+            <td class="peak-flow-table__level">
+              <%= l(report[:start]) + ' - ' + l(report[:end]) %>
+            </td>
+            <td>
+              <%= link_to patient_report_path(@patient, report[:report_id]) do %>
+                <button class="btn btn-primary btn-xs">
+                  <%= t('patient.views.reports.action.view') %>
+                </button>
+              <% end %> 
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+  <% if !reports || reports.empty? %>
+    <div class="peak-flow-table__no-peak-flows">
+      <%= t('patient.views.reports.no_values') %>
+    </div>
+  <% end %>
+</div>

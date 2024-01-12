@@ -1,0 +1,54 @@
+<div class="dashboard">
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <%= render 'shared/statistic_panel', variant: 'green', percentage: @green_zone_percentage, label: t('dashboard.headers.green_zone_patients') %>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <%= render 'shared/statistic_panel', variant: 'yellow', percentage: @yellow_zone_percentage, label: t('dashboard.headers.yellow_zone_patients') %>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <%= render 'shared/statistic_panel', variant: 'red', percentage: @red_zone_percentage, label: t('dashboard.headers.red_zone_patients') %>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <%= render 'shared/statistic_panel', variant: 'usage-rate', percentage: @app_usage_percentage, label: t('dashboard.headers.app_usage_rate') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>
+            <%= t('dashboard.headers.patients') %>
+          </h1>
+        </div>
+        <%= render 'patients/patient_table' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>
+            <%= t('dashboard.headers.zone_patients') %>
+          </h1>
+        </div>
+        <%= render 'exacerbations/exacerbation_table', root_page: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1>
+          <%= t('dashboard.headers.alert_table') %>
+        </h1>
+      </div>
+      <%= render 'alert_tables/alert_table' %>
+    </div>
+  </div>
+</div>
+</div>

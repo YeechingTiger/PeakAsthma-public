@@ -1,0 +1,22 @@
+<div class="user-account-controls">
+  <% if current_user %>
+  <div class="btn-group">
+    <button type="button" class="user-account-controls__button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="user-account-controls__down-indicator glyphicon glyphicon-chevron-down"></span>
+      <span class="user-account-controls__name">
+        <%= current_user.last_name_first_initial %>
+      </span>
+      <span class="user-account-controls__profile-image">
+        <%= current_user.first_initial %>
+      </span>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to t('devise.sessions.log_out'), destroy_user_session_path, method: :get %>
+      </li>
+    </ul>
+  </div>
+  <% else %>
+    <%= button_to t('devise.sessions.log_in'), new_user_session_path, method: :get, class: 'user-account-controls__button' %>
+  <% end %>
+</div>

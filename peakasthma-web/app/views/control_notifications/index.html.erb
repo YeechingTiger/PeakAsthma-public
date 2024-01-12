@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3>
+          Control Patients Notifications
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-8 col-md-push-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table notification-table">
+          <thead>
+            <tr>
+              <th>
+                <%= t 'notification.labels.author' %>
+              </th>
+              <th>
+                <%= t 'notification.labels.message' %>
+              </th>
+              <th>
+                Send At
+              </th>
+              <th>
+                <%= t 'notification.labels.status' %>
+              </th>
+              <th>
+                <%= t 'notification.labels.actions' %>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @control_notifications %>
+          </tbody>
+        </table>
+        <div class="digg_pagination">
+          <%= will_paginate @control_notifications %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-4 col-md-pull-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'form', notification: ControlNotification.new %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'form_default', notification: ControlNotification.new %>
+      </div>
+    </div>
+  </div>
+</div>
+<% if false %>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <%= render 'shared/statistic_panel', variant: 'usage-rate', percentage: @control_notification_stats[:average_open_rate], label: t('notification.headers.average_open_rate') %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <%= render 'shared/statistic_panel', variant: 'usage-rate', value: @control_notification_stats[:notifications_sent], label: t('notification.headers.notifications_sent') %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <%= render 'shared/statistic_panel', variant: 'usage-rate', value: @control_notification_stats[:notifications_clicked], label: t('notification.headers.notifications_clicked') %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <%= render 'shared/statistic_panel', variant: 'usage-rate', percentage: @control_notification_stats[:engagement_rate], label: t('notification.headers.engagement_rate') %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,35 @@
+<div class="peak-flow-table">
+  <table class="table" id="patient-index-table">
+    <thead>
+      <tr>
+        <th>
+          <%= t('diet.created_date') %>
+        </th>
+        <th>
+          <%= t('diet.fruit') %>
+        </th>
+        <th>
+          <%= t('diet.vegetable') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @diet_records.each do |record| %>
+        <tr>
+          <td>
+            <%= record.record_date %>
+          </td>
+          <td>
+            <%= record.fruit %> servings
+          </td>
+          <td>
+            <%= record.vegetable %> servings
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    <div class="digg_pagination">
+    <%= will_paginate @diet_records, :param_name => 'diet_records_page' %>
+    </div>
+</div>

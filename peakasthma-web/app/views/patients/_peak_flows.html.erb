@@ -1,0 +1,46 @@
+<div class="peak-flow-table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="peak-flow-table__level">
+          <%= t('peak_flow.model.level') %>
+        </th>
+        <th>
+          <%= t('peak_flow.model.created_at') %>
+        </th>
+        <th>
+          <%= t('peak_flow.model.score') %>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <% if peak_flows&.any? %>
+      <tbody>
+        <% peak_flows.each do |peak_flow| %>
+          <tr>
+            <td class="peak-flow-table__level peak-flow-table__level--<%= peak_flow.level %>">
+              <span class="glyphicon glyphicon-record"></span>
+            </td>
+            <td>
+              <%= l peak_flow.created_at %>
+            </td>
+            <td>
+              <%= peak_flow.score %>
+              <% unless peak_flow.symptoms.empty? %>
+                <span class="peak-flow-table__symptom-badge" data-toggle="popover" data-trigger="hover" data-placement="left" data-html="true" data-content="<%= render 'patients/peak_flow_popover', peak_flow: peak_flow %>"><%= t('peak_flow.model.symptoms') %></span>
+              <% end %>
+              <% if peak_flow.symptoms.empty? && peak_flow.score.nil? %>
+                No Record
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+  <% if !peak_flows || peak_flows.empty? %>
+    <div class="peak-flow-table__no-peak-flows">
+      <%= t('patient.model.peak_flows.no_values') %>
+    </div>
+  <% end %>
+</div>

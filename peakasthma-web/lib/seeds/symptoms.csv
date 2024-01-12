@@ -1,0 +1,21 @@
+Symptom Name,Level,Category,Emergency
+Coughing a little,yellow,Cough,FALSE
+Mild cough,yellow,Cough,FALSE
+Mild wheezing,yellow,Wheezing,FALSE
+Noisy breathing,yellow,Wheezing,FALSE
+Heavy breathing,yellow,Shortness of breath,FALSE
+I feel tired,yellow,Slowed activity,FALSE
+Trouble exercising,yellow,Slowed activity,FALSE
+Trouble playing,yellow,Slowed activity,FALSE
+Tight chest,yellow,Other,FALSE
+Can't stop coughing,red,Cough,FALSE
+Chest sucking in,red,Wheezing,FALSE
+Can't breathe,red,Shortness of breath,TRUE
+Can't catch my breath,red,Shortness of breath,TRUE
+Trouble talking,red,Slowed activity,FALSE
+Trouble walking,red,Slowed activity,FALSE
+Passing out/fainting,red,Slowed activity,TRUE
+Blue lips,red,Other,TRUE
+Blue fingernails,red,Other,TRUE
+Tight throat,red,Other,TRUE
+"No coughing, wheezing or shortness of breathe",green,None (No asthma symptoms),FALSE

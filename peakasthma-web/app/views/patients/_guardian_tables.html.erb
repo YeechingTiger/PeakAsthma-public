@@ -1,0 +1,29 @@
+<div class="patient-profile__table-header">
+    GUARDIAN INFO
+</div>
+<% @patient.guardians.each_with_index do |guardian, index| %>
+  <div class="panel panel-default">
+    <div class="patient-profile-table">
+      <div class="patient-profile-table__row">
+        <div class="patient-profile-table__header patient-profile-table__header--highlighted">
+          <%= "#{t('guardian.label')} \##{(index + 1)}" %>
+        </div>
+        
+          <div class="patient-profile-table__cell">
+            <%= link_to edit_patient_guardian_path(@patient, guardian), method: :get, class: 'patient-profile-table__action', id: "edit-guardian-#{guardian.id}" do %>
+              <span class="glyphicon glyphicon-edit text-info"></span>
+            <% end %>
+            <% if current_user&.admin? %>
+            <%= link_to patient_guardian_path(@patient, guardian), method: :delete, data: {confirm: t('guardian.views.delete_confirm')}, class: 'patient-profile-table__action', id: "delete-guardian-#{guardian.id}" do %>
+              <span class="glyphicon glyphicon-remove text-danger"></span>
+            <% end %>
+            <% end %>
+          </div>
+        
+      </div>
+      <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('guardian.model.name'), value: guardian.user.first_name + " " + guardian.user.last_name %>
+      <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('guardian.model.relationship_to_patient'), value: t("guardian.model.relationship.#{guardian.relationship_to_patient}") %>
+      <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('guardian.model.phone'), value: guardian.phone %>
+    </div>
+  </div>
+<% end %>

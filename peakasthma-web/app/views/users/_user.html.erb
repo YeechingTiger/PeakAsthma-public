@@ -1,0 +1,26 @@
+<tr>
+  <td>
+    <%= link_to user.username, edit_user_url(user) %>
+  </td>
+  <td>
+    <%= link_to user.full_name, edit_user_url(user) %>
+  </td>
+  <td>
+    <% if user.patient? %>
+      <%= link_to t("user.model.roles.#{user.role}"), patient_path(user.patient) %>
+    <% else %>
+      <%= t("user.model.roles.#{user.role}") %>
+    <% end %>
+  </td>
+  <td>
+    <%= user.email %>
+  </td>
+  <td>
+    <%= l user.created_at %>
+  </td>
+  <td>
+    <%= link_to user, method: :delete, remote: true, data: {confirm: t('user.views.delete_confirm')}, id: "#{user.id}_delete" do%>
+      <span class="glyphicon glyphicon-remove pull-right text-danger"></span>
+    <% end %>
+  </td>
+</tr>

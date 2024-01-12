@@ -1,0 +1,41 @@
+<tr>
+  <td class="notification-table__author">
+    <%= control_notification.author&.last_name_first_initial %>
+  </td>
+  <td>
+    <%= control_notification.message %>
+  </td>
+  <td>
+    <%= l control_notification.send_at %>
+  </td>
+  <td>
+    <% if control_notification.sent %>
+      <strong class="text-success">
+        <%= t('notification.model.status.sent') %>
+      </strong>
+    <% else %>
+      <strong class="text-info">
+        <%= t('notification.model.status.pending') %>
+      </strong>
+    <% end %>
+  </td>
+  <td class="notification-table__actions">
+    <% unless control_notification.sent %>
+      <% if control_notification.alert == 9 %>
+        <%= link_to edit_control_notification_path(control_notification), id: "#{control_notification.id}_edit" do %>
+          <span class="glyphicon glyphicon-edit text-info"></span>
+        <% end %>
+        <%= link_to control_notification, method: :delete, remote: true, data: {confirm: t('notification.views.delete_confirm')}, id: "#{control_notification.id}_delete" do %>
+          <span class="glyphicon glyphicon-remove text-danger"></span>
+        <% end %>
+      <% else %>
+        <%= link_to edit_control_patient_control_notification_path(control_notification.target_patient, control_notification), id: "#{control_notification.id}_edit" do %>
+          <span class="glyphicon glyphicon-edit text-info"></span>
+        <% end %>
+        <%= link_to control_patient_control_notification_path(control_notification.target_patient, control_notification), method: :delete, remote: true, data: {confirm: t('notification.views.delete_confirm')}, id: "#{control_notification.id}_delete" do %>
+          <span class="glyphicon glyphicon-remove text-danger"></span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

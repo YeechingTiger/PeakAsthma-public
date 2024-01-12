@@ -1,0 +1,15 @@
+.sign-in {
+  background: #3b3e53;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  &__top-spaced {
+    position: fixed;
+    top: 35%;
+  }
+
+  &__password-reset-btn {
+    margin-top: 10px;
+  }
+}

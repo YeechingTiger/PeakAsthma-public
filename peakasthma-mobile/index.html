@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html ng-app="willowPeakAsthmaHyrbid">
+<head>
+  <title>Peak Asthma - Mobile</title>
+	<meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link href="src/app.scss" type="text/css" rel="stylesheet/scss">
+  <link href="www/app.full.min.css" type="text/css" rel="stylesheet" data-concat="false">
+  <link href="assets/css/ionicons.css" type="text/css" rel="stylesheet" data-remove="false">
+</head>
+<body>
+
+  <!-- Livereload script for development only (stripped during dist build) -->
+  <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+
+  <!-- JS from Bower Components -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+  <!-- Add New Bower Component JS Above -->
+
+  <!-- JS from npm Components -->
+  <!-- <script src="node_modules/jquery/dist/jquery.js"></script> -->
+  <!-- <script src="node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"></script> -->
+  <!-- <script src="node_modules/moment/src/moment.js"></script> -->
+  <!-- <script src="/node_modules/angular/angular.js"></script> -->
+  <!-- <script src="/node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script> -->
+  <!-- <script src="/node_modules/angular-animate/angular-animate.js"></script> -->
+  <!-- <script src="node_modules/angular-resource/angular-resource.js"></script> -->
+  <!-- <script src="/node_modules/angular-translate/dist/angular-translate.js"></script> -->
+  <!-- <script src="/node_modules/angular-touch/angular-touch.js"></script> -->
+  <!-- <script src="/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script> -->
+  <!-- <script src="/node_modules/ngmap/build/scripts/ng-map.min.js"></script> -->
+  <!-- Add New npm Component JS Above -->
+
+  <!-- Main App JS -->
+  <script src="src/app.js"></script>
+  <script src="src/asthmaZone/asthmaZone.js"></script>
+  <script src="src/asthmaZone/views/symptoms/symptoms.js"></script>
+  <script src="src/asthmaZone/modals/greenZoneModal/greenZoneModal.js"></script>
+  <script src="src/asthmaZone/modals/redZoneModal/redZoneModal.js"></script>
+  <script src="src/asthmaZone/modals/yellowZoneModal/yellowZoneModal.js"></script>
+  <script src="src/asthmaZone/services/symptomService.js"></script>
+  <script src="src/asthmaZone/modals/recordPeakFlow/recordPeakFlow.js"></script>
+  <script src="src/asthmaZone/services/peakFlowService.js"></script>
+  <script src="src/asthmaZone/directives/peakFlowSlider/peakFlowSlider.js"></script>
+  <script src="src/asthmaZone/directives/peakFlowGraph/peakFlowGraph.js"></script>
+  <script src="src/asthmaZone/modals/determineAsthmaZone/determineAsthmaZone.js"></script>
+  <script src="src/asthmaZone/services/asthmaZoneModalManager.js"></script>
+  <script src="src/asthmaZone/modals/howAreYouFeeling/howAreYouFeeling.js"></script>
+  <script src="src/asthmaZone/modals/yellowZoneMedicationInstructionsModal/yellowZoneMedicationInstructionsModal.js"></script>
+  <script src="src/asthmaZone/modals/controlMedicationReportModal/controlMedicationReportModal.js"></script>
+  <script src="src/asthmaZone/modals/redZoneMedicationInstructionsModal/redZoneMedicationInstructionsModal.js"></script>
+  <script src="src/authentication/authentication.js"></script>
+  <script src="src/authentication/views/login/login.js"></script>
+  <script src="src/authentication/services/loginService.js"></script>
+  <script src="src/authentication/factories/authResponseInterceptor.js"></script>
+  <script src="src/dashboard/dashboard.js"></script>
+  <script src="src/dashboard/views/dashboard/dashboard.js"></script>
+  <script src="src/dashboard/views/dashboard.patientProfile/dashboard.patientProfile.js"></script>
+  <script src="src/dashboard/views/dashboard.root/dashboard.root.js"></script>
+  <script src="src/dashboard/views/dashboard.education/dashboard.education.js"></script>
+  <script src="src/dashboard/views/dashboard.map/dashboard.map.js"></script>
+  <script src="src/dashboard/views/dashboard.notifications/dashboard.notifications.js"></script>
+  <script src="src/dashboard/views/dashboard.medications/dashboard.medications.js"></script>
+  <script src="src/dashboard/services/prescriptionService.js"></script>
+  <script src="src/dashboard/services/mapService.js"></script>
+  <script src="src/dashboard/services/activityHistoryService.js"></script>
+  <script src="src/dashboard/directives/peak-flow-activity/peak-flow-activity.js"></script>
+  <script src="src/dashboard/services/notificationService.js"></script>
+  <script src="src/dashboard/directives/notice-box/notice-box.js"></script>
+  <script src="src/dashboard/directives/survey-link/survey-link.js"></script>
+  <script src="src/dashboard/directives/unread-notification-badge/unread-notification-badge.js"></script>
+  <script src="src/dashboard/directives/prescription-activity/prescription-activity.js"></script>
+  <script src="src/dashboard/modals/notificationAlertModal/notificationAlertModal.js"></script>
+  <script src="src/dashboard/services/userService.js"></script>
+  <script src="src/dashboard/modals/policyViewerModal/policyViewerModal.js"></script>
+  <script src="src/dashboard/modals/clincardBalanceRequestModal/clincardBalanceRequestModal.js"></script>
+  <script src="src/mobileComponents/mobileComponents.js"></script>
+  <script src="src/mobileComponents/services/backTransitionService.js"></script>
+  <script src="src/mobileComponents/directives/mobileUiSrefBack.js"></script>
+  <script src="src/mobileComponents/directives/mobileUiViewBackTransition.js"></script>
+  <script src="src/pa.firebase/pa.firebase.js"></script>
+  <script src="src/pa.firebase/services/pushNotificationService.js"></script>
+  <script src="src/walkthrough/walkthrough.js"></script>
+  <script src="src/walkthrough/views/walkthrough/walkthrough.js"></script>
+  <script src="src/willowApi/willowApi.js"></script>
+  <script src="src/willowApi/config.js"></script>
+  <script src="src/willowApi/factories/apiEndpoints.js"></script>
+
+  <!-- Add New Component JS Above -->
+  <script type="text/javascript" src="cordova.js" data-remove="false"></script>
+  <script src="<Google Map>" data-remove="false"></script>
+    <div id="content">
+      <div class="spinner">
+        <div class="spinner-box">
+            <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="load_text">Loading...</div>
+        </div>
+      </div>
+      <div ui-view mobile-ui-view-back-transition>
+      </div>
+    </div>
+
+</body>
+</html>

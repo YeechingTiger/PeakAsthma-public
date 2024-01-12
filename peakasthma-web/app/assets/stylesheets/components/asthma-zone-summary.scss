@@ -1,0 +1,42 @@
+.mobile-asthma-statistic {
+  align-items: center;
+  color: white;
+  display: flex;
+  height: 75px;
+
+  &--green {
+    background-color: $green-zone;
+  }
+
+  &--yellow {
+    background-color: $yellow-zone;
+  }
+
+  &--red {
+    background-color: $red-zone;
+  }
+
+  &--usage-rate {
+    .mobile-asthma-statistic__percentage {
+      color: $brand-primary;
+    }
+
+    .mobile-asthma-statistic__label {
+      color: $gray;
+    }
+  }
+
+  &__percentage {
+    flex: 1;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  &__label {
+    flex: 1;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 14px;
+    text-transform: uppercase;
+  }
+}

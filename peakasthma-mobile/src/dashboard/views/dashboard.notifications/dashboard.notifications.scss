@@ -1,0 +1,143 @@
+.dashboard-notifications-view {
+    @include dashboard-view;
+}
+
+.notification-table {
+  @include card;
+  @include mobile-table;
+  background-color: transparent;
+}
+
+.dashboard-activity-history-view {
+  @include dashboard-view;
+
+  &__loader {
+    font-size: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $gray-light;
+
+    animation: spin 2s infinite linear;
+  }
+}
+
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+.activity-history-record {
+  @include card;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  &__content {
+    display: block;
+  }
+
+  &__date {
+    color: $gray-light;
+    line-height: 25px;
+  }
+
+  &__icon-cell {
+    padding-right: 10px;
+  }
+
+  &__icon {
+    border-radius: 15px;
+    display: block;
+    height: 30px;
+    // line-height: 25px;
+    margin-top: 5px;
+    width: 30px;
+    font-size: 20px;
+    // line-height: 15px;
+    text-align: center;
+
+    &--primary {
+      background-color: $brand-primary;
+      color: white;
+    }
+
+    &--secondary {
+      background-color: $brand-secondary;
+      color: white;
+    }
+
+    &--read {
+      background-color: gray;
+      color: white;
+    }
+
+    &--tertiary {
+      background-color: $brand-tertiary;
+      color: white;
+    }
+
+    &--red {
+      background-color: $red-zone;
+      color: white;
+    }
+
+    &--yellow {
+      background-color: $yellow-zone;
+      color: white;
+    }
+
+    &--green {
+      background-color: $green-zone;
+      color: white;
+    }
+  }
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .75;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, #4286f4, #4286f4, #4286f4);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #4286f4;
+    background-color: #fcfcfa;
+    font-weight: bold;
+  }
+}

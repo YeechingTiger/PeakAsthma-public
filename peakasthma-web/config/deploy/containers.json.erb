@@ -1,0 +1,70 @@
+{
+  "family": "<%= APP_NAME %>",
+  "containerDefinitions": [
+    {
+      "name": "webapp",
+      "image": "<%= IMAGE %>",
+      "essential": true,
+      "memoryReservation": 512,
+      "mountPoints": [],
+      "environment": [
+        { "name": "RAILS_MASTER_KEY", "value": "<%= MASTER_KEY %>" },
+        { "name": "RAILS_ENV", "value": "<%= RAILS_ENV %>" },
+        { "name": "REDIS_URL", "value": "<%= REDIS_URL %>" },
+        { "name": "RAILS_LOG_TO_STDOUT", "value": "1" }
+      ],
+      "portMappings": [
+        { "hostPort": 0, "containerPort": 3000 }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "<%= APP_NAME %>/<%= RAILS_ENV %>/rails",
+          "awslogs-region": "<%= AWS_REGION %>",
+          "awslogs-stream-prefix": "rails"
+        }
+      }
+    },
+    {
+      "name": "sidekiq",
+      "image": "<%= IMAGE %>",
+      "essential": true,
+      "memoryReservation": 512,
+      "mountPoints": [],
+      "environment": [
+        { "name": "RAILS_MASTER_KEY", "value": "<%= MASTER_KEY %>" },
+        { "name": "RAILS_ENV", "value": "<%= RAILS_ENV %>" },
+        { "name": "REDIS_URL", "value": "<%= REDIS_URL %>" }
+      ],
+      "command": ["bin/sidekiq", "-e", "<%= RAILS_ENV %>"],
+      "links": ["webapp"],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "<%= APP_NAME %>/<%= RAILS_ENV %>/sidekiq",
+          "awslogs-region": "<%= AWS_REGION %>",
+          "awslogs-stream-prefix": "sidekiq"
+        }
+      }
+    },
+    {
+      "name": "nginx",
+      "image": "metova/nginx",
+      "essential": true,
+      "memoryReservation": 128,
+      "mountPoints": [],
+      "portMappings": [
+        { "hostPort": 0, "containerPort": 80 }
+      ],
+      "links": ["webapp"],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "<%= APP_NAME %>/<%= RAILS_ENV %>/nginx",
+          "awslogs-region": "<%= AWS_REGION %>",
+          "awslogs-stream-prefix": "nginx"
+        }
+      }
+    }
+  ]
+}

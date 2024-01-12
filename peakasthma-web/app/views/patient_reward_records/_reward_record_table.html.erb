@@ -1,0 +1,179 @@
+<div class="peak-flow-table">
+<table class="table" id="patient-index-table">
+  <thead>
+    <tr>
+      <% if root_page %>
+        <th>
+          <%= t('reward_record.model.full_name') %>
+        </th>
+      <% end %>
+      <th>
+        <%= t('reward_record.model.logging_over_date') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.payment_due_day') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.month') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.payment_amount') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.payment_status') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.survey_status') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.survey_date') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.comment') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.group') %>
+      </th>
+      <th>
+        <%= t('reward_record.model.report_link') %>
+      </th>
+      <% if current_user&.admin? %>
+        <th>
+          <%= t('reward_record.model.action') %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reward_records.each do |reward_record| %>
+    <% if (reward_record.class.name == "PatientRewardRecord" and reward_record.patient.user.disabled == false) or (reward_record.class.name == "ControlPatientRewardRecord" and reward_record.control_patient.user.disabled == false) %>
+      <tr>
+        <% if root_page %>
+          <td>
+            <% if reward_record.class.name == "PatientRewardRecord" %>
+              
+                <%= link_to reward_record.patient.full_name, patient_url(reward_record.patient) %>
+
+            <% else %>
+                <%= link_to reward_record.control_patient.full_name, control_patient_url(reward_record.control_patient) %>
+            <% end %>
+          </td>
+        <% end %>
+        <td>
+          <%= l reward_record.logging_over_day, format: :short %>
+        </td>
+        <td>
+          <%= l (reward_record.logging_over_day + 7.days), format: :short %>
+        </td>
+        <td>
+          <%= reward_record.month %>
+        </td>
+        <td>
+          $<%= reward_record.payment_amount %>
+        </td>
+
+        <td class="zone-patient-table__level zone-patient-table__level--<%= reward_record.get_paid %>">
+          
+          <% if reward_record.get_paid == true %>
+            <span class="glyphicon glyphicon-ok"></span>
+            Paid
+          <% else %>
+            <span class="glyphicon glyphicon-remove"></span>
+            Not Paid
+          <% end %>
+        </td>
+
+        <td class="zone-patient-table__level zone-patient-table__level--<%= reward_record.survey_complete %>">
+          
+          <% if reward_record.survey_complete == true %>
+            <span class="glyphicon glyphicon-ok"></span>
+            Completed
+          <% else %>
+            <span class="glyphicon glyphicon-remove"></span>
+            Not Completed
+          <% end %>
+        </td>
+        
+        <td>
+          <% if reward_record.survey_complete_day != nil %>
+            <%=l reward_record.survey_complete_day.utc, format: :short %>
+          <% else %>
+            <%= "N/A" %>
+          <% end %>
+        </td>
+
+        <td>
+          <%= reward_record.comment %>
+        </td>
+
+        <td>
+          <% if reward_record.class.name == "PatientRewardRecord" %>
+            <% if reward_record.group_id == "1" %>
+              <b>PEAKmAAP</b>
+            <% elsif reward_record.group_id == "2" %>
+              <b>PEAKmAAP-<span style="color: red;">DS</span></b>
+            <% end %>
+          <% else %>
+            <b>UC NutriMap</b>
+          <% end %>
+        </td>
+  
+        <% if root_page %>
+          <td>
+            <% if reward_record.class.name == "PatientRewardRecord" %>
+              <%= link_to 'view report', patient_report_path(reward_record.patient, reward_record.month) %>
+            <% end %>
+          </td>
+        <% end %>
+        <% if current_user&.admin? %>
+          <% if reward_record.class.name == "PatientRewardRecord" %>
+            <td>
+              <%= link_to edit_patient_reward_record_path(reward_record), id: "#{reward_record.id}_edit" do %>
+                <button class="btn btn-primary btn-xs">Comment</button>
+              <% end %> 
+              <% if reward_record.get_paid == false %>
+                <%= link_to patient_reward_record_path(reward_record, :patient_reward_record => {:get_paid => true}), method: :patch, remote: true, data: {confirm: t('reward_record.views.read_confirm_paid')}, id: "#{reward_record.id}_read" do %>
+                  <button class="btn btn-warning btn-xs">Not Paid</button>
+                <% end %>
+              <% end %>
+              <% if reward_record.get_paid == true %>
+                <%= link_to patient_reward_record_path(reward_record, :patient_reward_record => {:get_paid => false}), method: :patch, remote: true, data: {confirm: t('reward_record.views.read_confirm_unpaid')}, id: "#{reward_record.id}_read" do %>
+                  <button class="btn btn-primary btn-xs">Paid</button>
+                <% end %>
+              <% end %>
+              <%= link_to patient_reward_record_path(reward_record, :patient_reward_record => {:comment => reward_record.comment}), method: :patch, remote: true, data: {confirm: t('reward_record.views.check_survey_status')}, id: "#{reward_record.id}_survey" do %>
+                <button class="btn btn-success btn-xs">Check Survey Status</button>
+              <% end %> 
+            </td>
+          <% else %>
+            <td>
+              <%= link_to edit_control_patient_reward_record_path(reward_record), id: "#{reward_record.id}_edit" do %>
+                <button class="btn btn-primary btn-xs">Comment</button>
+              <% end %> 
+              <% if reward_record.get_paid == false %>
+                <%= link_to control_patient_reward_record_path(reward_record, :control_patient_reward_record => {:get_paid => true}), method: :patch, remote: true, data: {confirm: t('reward_record.views.read_confirm_paid')}, id: "#{reward_record.id}_read" do %>
+                  <button class="btn btn-warning btn-xs">Not Paid</button>
+                <% end %>
+              <% end %>
+              <% if reward_record.get_paid == true %>
+                <%= link_to control_patient_reward_record_path(reward_record, :control_patient_reward_record => {:get_paid => false}), method: :patch, remote: true, data: {confirm: t('reward_record.views.read_confirm_unpaid')}, id: "#{reward_record.id}_read" do %>
+                  <button class="btn btn-primary btn-xs">Paid</button>
+                <% end %>
+              <% end %>
+              <%= link_to control_patient_reward_record_path(reward_record, :control_patient_reward_record => {:comment => reward_record.comment}), method: :patch, remote: true, data: {confirm: t('reward_record.views.check_survey_status')}, id: "#{reward_record.id}_survey" do %>
+                <button class="btn btn-success btn-xs">Check Survey Status</button>
+              <% end %> 
+            </td>
+
+          <% end %>
+        <% end %>
+        
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<div class="digg_pagination">
+  <%= will_paginate @reward_records, :param_name => 'reward_record_page' %>
+</div>
+</div>

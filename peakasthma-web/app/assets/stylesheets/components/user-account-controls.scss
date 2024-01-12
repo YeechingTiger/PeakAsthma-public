@@ -1,0 +1,45 @@
+.user-account-controls {
+  border-left: 2px solid $gray-lighter;
+  border-right: 2px solid $gray-lighter;
+
+  &__button {
+    background-color: #fff;
+    border: 0;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    &:hover {
+      background-color: darken(#fff, 3%);
+    }
+  }
+
+  &__down-indicator {
+    margin: 0 5px;
+    font-size: 10px;
+  }
+
+  &__name {
+    text-transform: capitalize;
+  }
+
+  &__profile-image {
+    background-color: $brand-primary;
+    border-radius: 100%;
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-transform: capitalize;
+  }
+
+  .btn-group {
+    &.open {
+      .dropdown-toggle {
+        box-shadow: none;
+      }
+    }
+  }
+}

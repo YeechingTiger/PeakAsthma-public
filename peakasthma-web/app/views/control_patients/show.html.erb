@@ -1,0 +1,64 @@
+<div class="patient-profile">
+  <div class="row">
+    <div class="col-lg-3 col-md-4">
+      <% if current_user&.admin? %>
+        <%= link_to new_control_patient_control_notification_path(@controlPatient), class: 'btn btn-success btn-block' do %>
+          <span class="glyphicon glyphicon-envelope"></span>
+          Send Message
+        <% end %>
+      <% end %>
+      <br>
+      <% if current_user&.admin? %>
+        <%= link_to edit_control_patient_path(@controlPatient), class: 'btn btn-info btn-block' do %>
+          <span class="glyphicon glyphicon-edit"></span>
+          <%= t('patient.views.buttons.edit') %>
+        <% end %>
+      <% end %>
+      <br>
+      <%= render partial: 'control_patients/patient_info_table' %>
+      <%= render partial: 'control_patients/patient_additional_info_table' %>
+      <% if current_user&.admin? %>
+        <%= render partial: 'control_incentive/rewards_table' %>
+      <% end %>
+    </div>
+
+    <div class="col-lg-9 col-md-8">
+      <% if current_user&.admin? %>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="recent-peak-flows__header">
+                <%= t('dashboard.headers.incentive') %>
+              </div>
+              <%= render 'control_incentive/incentives_table' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if current_user&.admin? %>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="recent-peak-flows__header">
+                <%= t('dashboard.headers.monthly_reward') %>
+              </div>
+              <%= render 'incentive/monthly_reward_table' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="recent-peak-flows__header">
+              <%= t('diet.record') %>
+            </div>
+            <%= render 'control_patients/diet_table' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<table class="table" id="patient-index-table">
+  <thead>
+    <tr>
+      <th>
+        Email Alert Type
+      </th>
+      <th>
+        Mail To
+      </th>
+      <th>
+        Sent At
+      </th>
+     <th>
+        Opened At
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @alert_emails.each do |email| %>
+      <tr>
+        <td>
+          <%= email.subject %>
+        </td>
+        <td>
+          <% if email.mailer.include? "admin" %>
+            Admin
+          <% else %>
+            Guardian
+          <% end %>
+        </td>
+        <td>
+          <%= l email.sent_at %>
+        </td>
+        
+        <td>
+          <% if email.opened_at %>
+            <%= l email.opened_at %>
+          <% else %>
+            Not Opened
+          <% end %>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

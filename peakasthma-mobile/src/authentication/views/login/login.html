@@ -1,0 +1,35 @@
+<div class="login-view container" ng-controller="LoginCtrl">
+  <form id="login-form" ng-submit="logIn()">
+    <div class="login-view__errors">
+      <div class="alert alert-danger alert-dismissible show" role="alert" ng-repeat="error in errors">
+        <button type="button" class="close" ng-click="closeError();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div>{{ error }}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="login-form__email" translate>authentication.models.user.username</label>
+      <input ng-model="user.username" type="text" class="form-control" id="login-form__email" translate-attr="{ placeholder: 'authentication.models.user.username' }">
+    </div>
+    <div class="form-group">
+      <label for="login-form__password" translate>authentication.models.user.password</label>
+      <input ng-model="user.password" type="password" class="form-control" id="login-form__password" translate-attr="{ placeholder: 'authentication.models.user.password' }">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" translate>authentication.common.login</button>
+  </form>
+  <div class="login-view__sign-up">
+
+  </div>
+  <div class="forget-password">
+    <a onclick="window.open('http://peakasthma.org/users/password/new', '_system'); return false;">Did you forget
+      your password?</a>
+  </div>
+  <br></br>
+  <div class="policy">
+    <a onclick="window.open('http://peakasthma.org/peakasthma/privacy_policy.html', '_system'); return false;">Privacy Policy</a>
+  </div>
+  <div class="policy">
+    <a onclick="window.open('http://peakasthma.org/peakasthma/term_of_service.html', '_system'); return false;">Term of Service</a>
+  </div>
+</div>

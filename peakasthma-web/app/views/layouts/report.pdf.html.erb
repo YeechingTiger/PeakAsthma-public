@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Monthly Report</title>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+    <%= wicked_pdf_stylesheet_link_tag 'components/report' %>
+    <%= wicked_pdf_javascript_include_tag "report" %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

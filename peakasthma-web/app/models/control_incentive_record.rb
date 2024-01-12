@@ -1,0 +1,2 @@
+class ControlIncentiveRecord < ApplicationRecord
+end

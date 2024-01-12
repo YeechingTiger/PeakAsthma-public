@@ -1,0 +1,39 @@
+<div class="peak-flow-table">
+<table class="table" id="patient-index-table">
+  <thead>
+    <tr>
+      <th>
+        <%= t('incentive.model.month') %>
+      </th> 
+      <th>
+        <%= t('incentive.model.day') %>
+      </th>
+      <th>
+        <%= t('incentive.model.reward_amount') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @incentives.each do |incentive| %>
+      <tr>
+        <td>
+          <%= incentive.month %>
+        </td> 
+        <td>
+          <%= incentive.day %>
+        </td>
+        <td>
+          <% if incentive.get_incentive %>
+            $0.75
+          <% else %>
+            $0
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="digg_pagination">
+  <%= will_paginate @incentives, :param_name => 'incentives_page' %>
+</div>
+</div>

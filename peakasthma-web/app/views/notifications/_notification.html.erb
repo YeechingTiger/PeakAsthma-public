@@ -1,0 +1,41 @@
+<tr>
+  <td class="notification-table__author">
+    <%= notification.author&.last_name_first_initial %>
+  </td>
+  <td>
+    <%= notification.message %>
+  </td>
+  <td>
+    <%= l notification.send_at %>
+  </td>
+  <td>
+    <% if notification.sent %>
+      <strong class="text-success">
+        <%= t('notification.model.status.sent') %>
+      </strong>
+    <% else %>
+      <strong class="text-info">
+        <%= t('notification.model.status.pending') %>
+      </strong>
+    <% end %>
+  </td>
+  <td class="notification-table__actions">
+    <% unless notification.sent %>
+      <% if notification.alert == 9 %>
+        <%= link_to edit_notification_path(notification), id: "#{notification.id}_edit" do %>
+          <span class="glyphicon glyphicon-edit text-info"></span>
+        <% end %>
+        <%= link_to notification, method: :delete, remote: true, data: {confirm: t('notification.views.delete_confirm')}, id: "#{notification.id}_delete" do %>
+          <span class="glyphicon glyphicon-remove text-danger"></span>
+        <% end %>
+      <% else %>
+        <%= link_to edit_patient_notification_path(notification.target_patient, notification), id: "#{notification.id}_edit" do %>
+          <span class="glyphicon glyphicon-edit text-info"></span>
+        <% end %>
+        <%= link_to patient_notification_path(notification.target_patient, notification), method: :delete, remote: true, data: {confirm: t('notification.views.delete_confirm')}, id: "#{notification.id}_delete" do %>
+          <span class="glyphicon glyphicon-remove text-danger"></span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

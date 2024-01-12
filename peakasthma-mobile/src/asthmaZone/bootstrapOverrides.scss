@@ -1,0 +1,19 @@
+.modal {
+  // Bootstrap applies properties on the root element to make it visible.
+  // Because of that, I need to make this rule !important.
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+
+  .modal-dialog {
+    // margin: 0 15px 0 15px;
+
+    .modal-content {
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      border: 0;
+    }
+  }
+}

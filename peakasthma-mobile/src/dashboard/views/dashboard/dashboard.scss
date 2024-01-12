@@ -1,0 +1,129 @@
+.dashboard-view {
+  position: relative;
+  height: 100%;
+
+  &__ui-view[ui-view] {
+    background-color: $container-background;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 50px;
+    left: 0;
+  }
+}
+
+.dashboard-nav-bar {
+  display: flex;
+  display: -webkit-flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+
+  &__container {
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-align-items: center;
+    -webkit-align-content: space-around;
+    -webkit-justify-content: space-evenly;
+
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-evenly;
+
+    width: 100%;
+  }
+
+  &__button {
+    color: #000;
+    display: block;
+    position: relative;
+    flex: 1;
+    -webkit-flex: 1;
+    font-size: 36px;
+    height: 50px;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    &--active {
+      color: $brand-primary;
+      border-color: $brand-primary;
+    }
+
+    .badge {
+      background-color: $brand-primary;
+      position: absolute;
+      left: 55%;
+      top: 5px;
+    }
+  }
+}
+
+.covid-notification {
+  padding: 10px;
+  background-color: white;
+  h5 {
+    color: red !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+  p {
+    font-size: 14px;
+    text-align: start;
+  }
+}
+
+.dashboard-header-bar {
+  // display: flex;
+  // display: -webkit-flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  height: 50px;
+
+  .navbar {
+    width: 100%;
+    p {
+      width: 100%;
+      text-align: center;
+      color: black;
+    }
+  }
+
+  &__static {
+    height: 40px;
+  }
+}
+
+.navbar-header {
+  display: absolute;
+  font-weight: bold;
+  width: 100%;
+}
+
+.back_btn {
+  position: fixed;
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.cancel_btn {
+  position: fixed;
+  right: 0;
+  font-size: 30px;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
+.dashboard-view .container {
+  padding-top: 80px !important;
+}

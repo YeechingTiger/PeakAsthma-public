@@ -1,0 +1,19 @@
+.not-yet-implemented {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  &--medium {
+    height: 250px;
+  }
+
+  &--large {
+    height: 625px;
+  }
+
+  &__icon {
+    color: lighten($gray-base, 75%);  
+    font-size: 36px;
+  }
+}

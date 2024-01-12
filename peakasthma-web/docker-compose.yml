@@ -1,0 +1,66 @@
+version: "2.1"
+
+services:
+  _defaults: &DEFAULTS
+    build: .
+    volumes:
+      - .:/app
+      - gems:/gems
+      - $HOME/.ssh:/root/.ssh
+    environment: &ENVIRONMENT
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION}
+      BUNDLE_JOBS: 4
+      DB_HOST: db
+      DB_USERNAME: apps
+      DB_PASSWORD: metova123
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    depends_on:
+      - db
+
+  bundle:
+    <<: *DEFAULTS
+    command: bash -c "gem install bundler && bundle"
+
+  web: &web
+    <<: *DEFAULTS
+    ports:
+      - "3000:3000"
+
+  test:
+    <<: *DEFAULTS
+    environment:
+      <<: *ENVIRONMENT
+      RAILS_ENV: test
+      SPEC_OPTS: "-f progress -f RSpec::JUnit -o /app/reports/junit.xml"
+    command: >
+      bash -c "dockerize -wait tcp://db:${DB_PORT_MAP:-5432} -timeout 30s &&
+      bin/rails db:create db:schema:load &&
+      xvfb-run -a bin/rspec"
+
+  deploy:
+    <<: *DEFAULTS
+    environment:
+      <<: *ENVIRONMENT
+      TF_VAR_aws_access_key: ${AWS_ACCESS_KEY_ID}
+      TF_VAR_aws_secret_key: "${AWS_SECRET_ACCESS_KEY}"
+      TF_VAR_aws_region: ${AWS_REGION}
+      TF_VAR_master_key: ${RAILS_MASTER_KEY}
+    working_dir: /app/config/deploy
+    command: bash -c "terraform init -force-copy && terraform apply -target module.`echo $RAILS_ENV`"
+
+  db: &db
+    image: postgres:9.5
+    environment:
+      POSTGRES_USER: apps
+      POSTGRES_PASSWORD: metova123
+    ports:
+      - "${DB_PORT_MAP:-5432}"
+    volumes:
+      - db-data:/var/lib/postgresql
+
+volumes:
+  db-data: {}
+  gems:
+    external: true

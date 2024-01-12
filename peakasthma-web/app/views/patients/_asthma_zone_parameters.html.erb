@@ -1,0 +1,10 @@
+<div class="patient-profile__table-header">
+  <%= t('patient.views.headers.asthma_zone_parameters') %>
+</div>
+<div class="panel panel-default">
+  <div class="patient-profile-table">
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.green_zone_range'), value: @patient.green_zone_range, header_variant: 'green-zone' %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.yellow_zone_range'), value: @patient.yellow_zone_range, header_variant: 'yellow-zone' %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.red_zone_range'), value: @patient.red_zone_range, header_variant: 'red-zone' %>
+  </div>
+</div>

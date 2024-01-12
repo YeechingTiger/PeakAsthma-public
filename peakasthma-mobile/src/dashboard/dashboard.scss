@@ -1,0 +1,27 @@
+@import "../mobileComponents/mobileComponents.scss";
+@import "../asthmaZone/bootstrapOverrides.scss";
+@import "../asthmaZone/modalMixins.scss";
+
+@mixin dashboard-view {
+  h1 {
+    font-size: 22px;
+  }
+}
+
+/* Component SASS */
+@import "views/dashboard/dashboard.scss";
+@import "views/dashboard.patientProfile/dashboard.patientProfile.scss";
+@import "views/dashboard.root/dashboard.root.scss";
+@import "views/dashboard.education/dashboard.education.scss";
+@import "views/dashboard.map/dashboard.map.scss";
+@import "views/dashboard.notifications/dashboard.notifications.scss";
+@import "views/dashboard.medications/dashboard.medications.scss";
+@import "directives/peak-flow-activity/peak-flow-activity.scss";
+@import "directives/notice-box/notice-box.scss";
+@import "directives/unread-notification-badge/unread-notification-badge.scss";
+@import "directives/prescription-activity/prescription-activity.scss";
+@import "modals/notificationAlertModal/notificationAlertModal.scss";
+@import "modals/policyViewerModal/policyViewerModal.scss";
+@import "directives/survey-link/survey-link.scss";
+/* Add Component SASS Above */
+

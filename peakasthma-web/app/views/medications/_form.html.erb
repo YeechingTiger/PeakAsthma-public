@@ -1,0 +1,9 @@
+<%= simple_form_for medication do |f| %>
+  <%= f.input :name %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.association :type, collection: MedicationType.all.order(:kind), label_method: :kind %>
+    </div>
+  </div>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

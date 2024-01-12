@@ -1,0 +1,9 @@
+<%= simple_form_for tip do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :tip %>
+      <%= f.input :schedule %>
+    </div>
+  </div>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

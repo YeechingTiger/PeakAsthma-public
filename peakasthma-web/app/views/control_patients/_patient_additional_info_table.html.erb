@@ -1,0 +1,14 @@
+<div class="patient-profile__table-header">
+  <%= t('patient.views.headers.additional_info') %>
+</div>
+<div class="panel panel-default">
+  <div class="patient-profile-table">
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('user.model.email'), value: @controlPatient.user.email %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('user.model.username'), value: @controlPatient.user.username %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('user.model.phone'), value: @controlPatient.phone %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('control_patient.model.physician'), value: @controlPatient.physician %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('control_patient.model.start_date'), value: l(@controlPatient.created_at) %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('control_patient.model.redcap_id'), value: @controlPatient.redcap_id %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('user.model.account_status'), value: @controlPatient.user.disabled ? 'Disabled' : 'Active' %>
+  </div>
+</div>

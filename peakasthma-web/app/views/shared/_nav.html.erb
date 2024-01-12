@@ -1,0 +1,92 @@
+<ul class="sidebar-nav">
+  <li class="sidebar-brand">
+    <%= link_to root_path do %>
+      <%= t('navigation.labels.app_title') %>
+    <% end %>
+  </li>
+  <% if current_user&.admin? %>
+    <li class="sidebar-section-header">
+      <%= t('navigation.labels.main_menu') %>
+    </li>
+    <li>
+      <%= link_to root_path do %>
+        <span class="glyphicon glyphicon-signal"></span>
+        <%= t('navigation.views.dashboard') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to patients_url do %>
+        <span class="glyphicon glyphicon-list"></span>
+        <%= t('navigation.views.profiles') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to control_patients_url do %>
+        <span class="glyphicon glyphicon-list"></span>
+        <%= t('navigation.views.control_profiles') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to patient_reward_records_url do %>
+        <span class="glyphicon glyphicon-gift"></span>
+        <%= t('navigation.views.patient_rewards') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to patient_visits_records_url do %>
+        <span class="glyphicon glyphicon-home"></span>
+        <%= t('navigation.views.patient_visits') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to clincard_balance_requests_url do %>
+        <span class="glyphicon glyphicon-usd"></span>
+        <%= t('navigation.views.clincard_balance_requests') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to medications_url do %>
+        <span class="glyphicon glyphicon-erase"></span>
+        <%= t('navigation.views.medications') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to symptoms_url do %>
+        <span class="glyphicon glyphicon-exclamation-sign"></span>
+        <%= t('navigation.views.symptoms') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to notifications_url do %>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <%= t('navigation.views.push_notifications') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to control_notifications_url do %>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <%= t('navigation.views.control_push_notifications') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to users_url do %>
+        <span class="glyphicon glyphicon-user"></span>
+        <%= t('navigation.views.users') %>
+      <% end %>
+    </li>
+  <% elsif current_user&.patient? %>
+    <li>
+      <%= link_to root_url + "peakasthma/index" do %>
+        <span class="glyphicon glyphicon-phone"></span>
+        <%= "Mobile Asthma App" %>
+      <% end %>
+    </li>
+  <% elsif current_user&.control_patient? %>
+    <li>
+      <%= link_to root_url + "nutrimap/index" do %>
+        <span class="glyphicon glyphicon-phone"></span>
+        <%= "Mobile Asthma Control App" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

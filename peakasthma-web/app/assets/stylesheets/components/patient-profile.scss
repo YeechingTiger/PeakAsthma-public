@@ -1,0 +1,38 @@
+@import 'mixins/mobile-components';
+
+.patient-profile {
+  .highlighted {
+    border-color: $brand-primary;
+    border-width: 2px;
+    color: $brand-primary;
+  }
+
+  &__table-header {
+    color: #888;
+    font-size: 14px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  &-table {
+    @include mobile-table;
+
+    &__header {
+      &--green-zone {
+        color: $green-zone;
+        font-weight: bold;
+      }
+
+      &--yellow-zone {
+        color: $yellow-zone;
+        font-weight: bold;
+      }
+
+      &--red-zone {
+        color: $red-zone;
+        font-weight: bold;
+      }
+    }
+  }
+}

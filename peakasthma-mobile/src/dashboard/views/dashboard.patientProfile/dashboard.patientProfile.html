@@ -1,0 +1,153 @@
+<div class="dashboard-header-bar__static"></div>
+<div class="dashboard-patient-profile-view container" ng-controller="DashboardPatientprofileCtrl">
+  <div class="patient-profile-table">
+    <div class="patient-profile-table__row">
+      <div class="patient-profile-table__header" translate>
+        authentication.models.user.fullName
+      </div>
+      <div class="patient-profile-table__cell">
+        {{ currentUser.firstName }} {{ currentUser.lastName }}
+      </div>
+    </div>
+    <!-- <div class="patient-profile-table__row">
+      <div class="patient-profile-table__header" translate>
+        authentication.models.user.gender
+      </div>
+      <div class="patient-profile-table__cell">
+        {{ currentUser.gender }}
+      </div>
+    </div>
+    <div class="patient-profile-table__row">
+      <div class="patient-profile-table__header" translate>
+        authentication.models.user.emailAbbreviated
+      </div>
+      <div class="patient-profile-table__cell">
+        {{ currentUser.email }}
+      </div>
+    </div> -->
+    <div class="patient-profile-table__row">
+      <div class="patient-profile-table__header" translate>
+        authentication.models.user.physician
+      </div>
+      <div class="patient-profile-table__cell">
+        {{ currentUser.physician }}
+      </div>
+    </div>
+    <div class="patient-profile-table__row">
+      <div class="patient-profile-table__header" translate>
+        authentication.models.user.afterHoursPhone
+      </div>
+      <div class="patient-profile-table__cell">
+        501-364-1202
+      </div>
+    </div>
+    <div class="patient-profile-table__row">
+      <div class="patient-profile-table__header" translate>
+        authentication.models.user.coordinatorPhone
+      </div>
+      <div class="patient-profile-table__cell">
+        888-249-2830
+      </div>
+    </div>
+    <!-- <section ng-repeat="guardian in currentUser.guardians">
+      <div class="patient-profile-table__row">
+        <div class="patient-profile-table__header" translate>
+          authentication.models.user.guardian
+        </div>
+        <div class="patient-profile-table__cell">
+          {{ guardian.firstName }} {{ guardian.lastName }}
+        </div>
+      </div>
+      <div class="patient-profile-table__row">
+        <div class="patient-profile-table__header" translate>
+          authentication.models.user.guardianRelationship
+        </div>
+        <div class="patient-profile-table__cell" translate>
+          {{ 'authentication.models.guardian.relationshipToPatient.' + guardian.relationshipToPatient }}
+        </div>
+      </div>
+    </section> -->
+  </div>
+  <div class="dashboard-patient-profile-view__button-card">
+    <button class="completed-view__button btn btn-primary btn-block" ui-sref="dashboard.medications" translate>
+      dashboard.patientProfile.medications
+    </button>
+  </div>
+  <div class="dashboard-patient-profile-view__button-card">
+    <button class="completed-view__button btn btn-info btn-block" ng-click="reportControllerMed()" translate>
+      dashboard.patientProfile.control
+    </button>
+  </div>
+  <div class="dashboard-patient-profile-view__button-card">
+    <button class="completed-view__button btn btn-info btn-block" ng-click="requestClincardBalance()" translate>
+      dashboard.patientProfile.clincard_balance
+    </button>
+  </div>
+  <div class="medication-notification-settings">
+    <label class="medication-notification-settings__reminder-toggle">
+      <a class="dashboard-nav-bar__button ion-ios-alarm-outline"></a>
+      <div class="medication-notification-settings__label-text" translate>
+        dashboard.models.medication.labels.med_reminder
+      </div>
+    </label>
+    <div class="medication-notification-settings__reminder-form">
+      <div class="form-group reminder">
+        <label for="take_medication_time" translate>
+          dashboard.models.medication.labels.takeMedicationTime
+        </label>
+        <input type="time"
+               class="form-control"
+               id="take_medication_time"
+               required="true"
+               ng-model="medicationReminderTime"
+               ng-model-options="{ debounce: 500 }"
+               ng-change="updatePrescriptionReminderPreference()">
+      </div>
+    </div>
+  </div>
+
+  <div class="medication-notification-settings">
+    <label class="medication-notification-settings__reminder-toggle">
+      <a class="dashboard-nav-bar__button ion-ios-alarm-outline"></a>
+      <div class="medication-notification-settings__label-text" translate>
+        dashboard.models.medication.labels.rep_reminder
+      </div>
+    </label>
+    <div class="medication-notification-settings__reminder-form">
+      <div class="form-group reminder">
+        <label for="take_medication_time" translate>
+          dashboard.models.medication.labels.takeMedicationTime
+        </label>
+        <input type="time"
+               class="form-control"
+               id="take_medication_time"
+               required="true"
+               ng-model="reportReminderTime"
+               ng-model-options="{ debounce: 500 }"
+               ng-change="updateReportReminderPreference()">
+      </div>
+    </div>
+  </div>
+
+  <div class="medication-notification-settings">
+    <label class="medication-notification-settings__reminder-toggle">
+      <a class="dashboard-nav-bar__button ion-ios-timer-outline"></a>
+      <div class="medication-notification-settings__label-text" translate>
+        dashboard.models.medication.labels.reminder_in_time_period
+      </div>
+    </label>
+    <div class="medication-notification-settings__reminder-form">
+      <div class="form-group reminder">
+        <select class="select" ng-model="selectedTime" ng-model-options="{ debounce: 500 }"
+        ng-change="updatePrescriptionRemindMeLater()" ng-options="time.display for time in times">
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-patient-profile-view__button-card">
+    <button class="completed-view__button btn btn-info btn-block" ng-click="viewPrivacyPolicy()" translate>
+      dashboard.patientProfile.policy
+    </button>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<script>
+  var reportPeriod = "<%= "#{@start_date.to_s().gsub('-', '/')} - #{@end_date.to_s().gsub('-', '/')}" %>";
+  var filename = "<%= "#{@patient.user.first_name}#{@patient.user.last_name}_#{@start_date.to_s().delete('-')}-#{@end_date.to_s().delete('-')}" %>";
+  var green_count = <%= @green_count %>;
+  var yellow_count = <%= @yellow_count %>;
+  var red_count = <%= @red_count %>;
+</script>
+
+<%= link_to patient_url(@patient) do %>
+  <button class="btn btn-danger back-btn">
+    Go Back
+  </button>
+<% end %>
+
+<button class="btn btn-danger back-btn" onclick="downloadPDF();">
+  Download PDF
+</button>
+
+<div class="report" id="reportPDF">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <header class="report__header">
+        <h1>
+          <%= "Monthly Asthma Report" %>
+        </h1>
+        <h2>
+          <%= "Patient Name: #{@patient.user.first_name} #{@patient.user.last_name}" %>
+        </h2>
+        <h2>
+          <%= "Report Time Period: #{@start_date.to_s().gsub('-', '/')} - #{@end_date.to_s().gsub('-', '/')}" %>
+        </h2>
+      </header>
+      <div class="report__graph-container">
+        <canvas id="reportChart" width="100mm" height="80mm"></canvas>
+        <script>renderReportChart();</script>
+      </div>
+      <div calss="report__tables-container">
+        <div class="col-md-8">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>HEALTHCARE &nbsp; UTILIZATION</th>
+                <th># of VISITS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ED</td>
+                <td>
+                  <%= @emt %>
+                </td>
+              </tr>
+              <tr>
+                <td>Hospitalizations</td>
+                <td>
+                  <%= @hospital %>
+                </td>
+              </tr>
+              <tr>
+                <td>Acute Healthcare</td>
+                <td>
+                  <%= @doctor %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <table class="table">
+            <thead>
+              <tr>
+                <th># of DAYS RESCUE MEDICATION &nbsp;USED</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= @rescue %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

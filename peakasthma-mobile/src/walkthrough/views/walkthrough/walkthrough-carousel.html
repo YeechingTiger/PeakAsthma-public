@@ -1,0 +1,9 @@
+ <div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+  <div class="carousel-inner" ng-transclude></div>
+  <ol class="carousel-indicators" ng-show="slides.length > 1">
+    <li ng-repeat="slide in slides | orderBy:indexOfSlide track by $index" ng-class="{ active: isActive(slide) }">
+    </li>
+  </ol>
+  <button ng-show="isNextDisabled()" class="btn btn-primary btn-block walkthrough-view__progress-button" ui-sref="dashboard.root" translate>walkthrough.common.get_started</button>
+  <a ng-hide="isNextDisabled()" class="walkthrough-view__skip" ui-sref="dashboard.root" translate>walkthrough.common.skip</a>
+</div>

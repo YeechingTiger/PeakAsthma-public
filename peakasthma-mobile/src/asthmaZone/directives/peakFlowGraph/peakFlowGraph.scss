@@ -1,0 +1,29 @@
+.peak-flow-graph {
+  width: 90%;
+  height: 150px;
+
+  &__gradient {
+    .start {
+      stop-color: lighten($brand-secondary,35%);
+    }
+
+    .stop {
+      stop-color: #fff;
+    }
+  }
+
+  &__label {
+    fill: $brand-secondary;
+    text-anchor: middle;
+    // alignment-baseline: baseline;
+    // baseline-shift: 12;
+  }
+
+  &__trend-line {
+    stroke-width: 6;
+  }
+
+  &__trend-area {
+    fill: url(#peak-flow-graph__gradient);
+  }
+}

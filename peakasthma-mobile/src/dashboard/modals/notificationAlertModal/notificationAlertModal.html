@@ -1,0 +1,21 @@
+<div class="notification-alert-modal">
+	<div class="modal-header">
+		<h4 class="modal-title" translate>
+			dashboard.modals.notificationAlertModal.header
+		</h4>
+	</div>
+	<div class="modal-body">
+		<div class="modal-body__message">
+			{{ notification.message }}
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="$dismiss()">
+			OK
+		</button>
+		<a class="btn btn-default" ng-click="$dismiss()" href="tel:911" ng-if="ems_flag(notification)" translate>
+			asthmaZone.modals.common.callEMS
+		</a>
+	</div>
+	
+</div>

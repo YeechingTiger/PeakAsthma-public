@@ -1,0 +1,16 @@
+.btn {
+  height: 50px;
+
+  &-primary, &-secondary, &-success, &-info, &-warning, &-alert {
+    text-transform: uppercase;
+  }
+
+  &-tertiary {
+    @include button-variant(white, $btn-tertiary-bg, $btn-tertiary-border);
+  }
+
+}
+
+.form-control {
+  height: 50px;
+}

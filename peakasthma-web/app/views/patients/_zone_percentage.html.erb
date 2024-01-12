@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="zone-percentage-table">
+    <div class="zone-percentage-table__row">
+       <div class="zone-percentage-table__header zone-percentage-table__level--<%= level %>">
+        <%= t('patient.views.labels.zone_percentage', level: level) %>
+      </div>
+    </div>
+    <div class="zone-percentage-table__row">
+      <div class="zone-percentage-table__cell">
+        <%= @patient.zone_percentage(level) %>%
+      </div>
+    </div>
+  </div>
+</div>

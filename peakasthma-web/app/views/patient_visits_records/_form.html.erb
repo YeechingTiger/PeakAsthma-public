@@ -1,0 +1,15 @@
+<% if @month == '3' %>
+  <%= simple_form_for @patient_visits_record do |f| %>
+    <%= f.input :three_month_comment, as: :text %>
+    <%= f.input :three_month_visit_note, as: :text %>
+    <%= f.button :submit, class: 'btn-primary' %>
+  <% end %>
+<% end %>
+
+<% if @month == '12' %>
+  <%= simple_form_for @patient_visits_record do |f| %>
+    <%= f.input :twelve_month_comment, as: :text %>
+    <%= f.input :twelve_month_visit_note, as: :text %>
+    <%= f.button :submit, class: 'btn-primary' %>
+  <% end %>
+<% end %>

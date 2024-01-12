@@ -1,0 +1,29 @@
+<div>
+  <div>
+    <% if @guardians && @guardians.count == 1 %>
+    <%= t('patient_exacerbation_email.shared.single_greeting', { guardian: @guardians.first.user.first_name + " " + @guardians.first.user.last_name }) %>
+
+    <% elsif @guardians && @guardians.count > 1 %>
+      <%= t('patient_exacerbation_email.shared.multiple_greeting', { guardian: @guardians.first.user.first_name + " " + @guardians.first.user.last_name, second_guardian: @guardians.last.user.first_name + " " + @guardians.last.user.last_name}) %>
+    <% end %>
+  </div>
+  <br/>
+  <div>This is a message from Dr. Perry’s PEAKmAAP research team at Arkansas Children’s.</div>
+  <br/>
+  <div>
+    Your child is enrolled in the PEAKmAAP asthma study. You are receiving this message because your child has logged yellow zone symptoms for the last 48 hours, without indicating improvement. Please check on your 
+    child’s symptoms. If your child is still experiencing asthma symptoms or has failed to improve, please contact your primary care doctor for further instructions.
+  </div>
+  <div>
+    If you receive this message after regular business hours and your child needs medical attention, call your PCP on-call doctor or Kid Care Line at 501-364-1202 for advice. 
+    If your child is experiencing a medical emergency, please call 911.
+  </div>
+  <br/>
+  <div>
+    <%= t('patient_exacerbation_email.shared.closing') %>
+  </div>
+  <br/>
+  <div>
+    <%= t('patient_exacerbation_email.shared.signature') %>
+  </div>
+</div>

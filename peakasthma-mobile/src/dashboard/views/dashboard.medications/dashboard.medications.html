@@ -1,0 +1,42 @@
+<div class="dashboard-header-bar__static"></div>
+<div class="dashboard-medications-view container" ng-controller="DashboardMedicationsCtrl">
+  <div class="medication-table">
+    <div class="medication-table__row" ng-repeat="prescription in prescriptions | limitTo: shownPrescriptions">
+      <div class="medication-table__icon-cell" ng-switch on="prescription.levels.split(',')[0]">
+        <div ng-switch-when="Red" class="medication-table__icon medication-table__icon--primary">
+          <span class="ion-medkit"></span>
+          <p>Red</p>
+        </div>
+        <div ng-switch-when="Yellow" class="medication-table__icon medication-table__icon--secondary">
+          <span class="ion-medkit"></span>
+          <p>Yellow</p>
+        </div>
+        <div ng-switch-default class="medication-table__icon medication-table__icon--tertiary">
+          <span class="ion-medkit"></span>
+          <p>Green</p>
+        </div>
+      </div>
+      <div class="medication-table__cell">
+        {{ prescription.medication.name }}
+        <div class="medication-table__description">
+          <ul class="medication-table__usage-list">
+            <li>
+              <span class="medicine_header">Formulation:</span> {{ 'dashboard.models.prescription.formulation.' + prescription.formulation | translate }}
+            </li>
+            <li>
+              <span class="medicine_header">Frequency:</span> {{ 'dashboard.models.prescription.frequency.' + prescription.frequency | translate}}
+            </li>
+            <li><span class="medicine_header">Dosage:</span> {{ prescription.dosage }}</li>
+
+            <li><span class="medicine_header">Assigned Flow Level:</span> {{ prescription.levels }}</li>
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div ng-if="shownPrescriptions < prescriptions.length" class="medication-table__row">
+      <button ng-click="showMorePrescriptions()" class="btn medication-table__btn" translate>dashboard.common.showMore</button>
+    </div>
+  </div>
+</div>

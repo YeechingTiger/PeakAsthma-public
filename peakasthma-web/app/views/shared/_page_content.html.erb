@@ -1,0 +1,13 @@
+<div id="page-content-wrapper">
+  <%= render 'shared/page_header' if current_user %>
+  <div class="page-content <%= 'padded' if current_user %>">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'shared/flash', flash: flash if flash.any? %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

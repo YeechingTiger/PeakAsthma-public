@@ -1,0 +1,51 @@
+.record-peak-flow-modal {
+  @include peak-modal-content;
+
+  @mixin peak-flow-text-content {
+    color: #999;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  &__card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 15px;
+  }
+
+  &__control {
+    @include peak-flow-text-content;
+    letter-spacing: 3px;
+    user-select: none;
+  }
+
+  &__instructions {
+    @include peak-flow-text-content;
+  }
+
+  &__number-display {
+    @include peak-flow-text-content;
+    padding: 20px;
+    font-size: 72px;
+  }
+}
+
+.zone-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #999;
+}
+
+#green-zone {
+  color: #4BD97A;
+}
+
+#yellow-zone {
+  color: #F7AA20;
+}
+
+#red-zone {
+  color: #EE2F58;
+}

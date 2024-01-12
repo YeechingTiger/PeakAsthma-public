@@ -1,0 +1,24 @@
+<%= simple_form_for [@patient, @prescription], validate: true do |f| %>
+  <div class="row">
+    <div class="col-md-3 col-xs-3">
+      <%= f.input :reminder_day, collection: Prescription::DATE_LIST, required: false %>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <%= f.association :medication, collection: Medication.all.order(:name) %>
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <%= f.input :level_ids, label: 'Asthma Zone', collection: LevelType.all, required: true, value_method: :id, label_method: :kind, as: :check_boxes, include_hidden: false, :checked => @prescription.level_numbers %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-xs-4">
+      <%= f.association :formulation, collection: FormulationType.all, label_method: :kind, input_html: { data: { 'dynamic-view-control': '#prescription-fields' } } %>
+    </div>
+  </div>
+  <div id="prescription-fields" data-dynamic-view="true" data-dynamic-view-url="<%= fields_patient_prescriptions_path %>">
+    <% if @prescription.formulation %>
+      <%= render partial: 'fields', locals: { formulation: @prescription.formulation } %>
+    <% end %>
+  </div>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

@@ -1,0 +1,46 @@
+.dashboard-medications-view {
+  @include dashboard-view;
+}
+
+.medication-table {
+  @include card;
+  @include mobile-table;
+  &__icon--secondary {
+    background-color: rgb(255,200,0);
+  }
+  &__usage-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      padding: 0 2px 0 2px;
+
+      font-size: 12px;
+
+      &:after {
+        content: none;
+      }
+
+      &:last-child:after {
+        content: none;
+      }
+    }
+  }
+}
+
+.medicine_header {
+  font-weight: bold;
+  color: black !important;
+}
+
+.back-button {
+  position :relative;
+  height: 35px;
+  left: 80%;
+  bottom: -10px;
+}
+
+.medication-table__icon p {
+  color: black;
+  font-size: 10px;
+}

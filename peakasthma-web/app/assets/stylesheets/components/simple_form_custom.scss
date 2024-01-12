@@ -1,0 +1,23 @@
+.check_boxes {
+    .checkbox {
+        margin-bottom: 20px;
+        label {
+            font-weight: bold;
+            input {
+                height: 18px !important;
+                outline: none !important;
+            }
+        }
+        
+    }
+}
+
+#notification-field {
+    width: 92%;
+    margin-left: 4%;
+}
+
+#notification-field-s {
+    width: 92%;
+    margin-left: 4%;
+}

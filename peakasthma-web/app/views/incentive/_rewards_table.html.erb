@@ -1,0 +1,14 @@
+<div class="patient-profile__table-header">
+  Rewards
+</div>
+<div class="panel panel-default">
+  <div class="patient-profile-table">
+    <%
+=begin%>
+ <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('incentive.model.week_incentives'), value: "$#{@week_incentives.length * 0.75}" %> 
+<%
+=end%>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('incentive.model.month_incentives'), value: "$#{@month_incentives  * 0.75}" %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('incentivet.model.total_incentives'), value: "$#{@total_incentives.length  * 0.75}" %>
+  </div>
+</div>

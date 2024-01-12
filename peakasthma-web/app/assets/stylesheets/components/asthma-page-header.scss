@@ -1,0 +1,19 @@
+.asthma-page-header {
+  height: 50px;
+  line-height: 40px;
+
+  &__button {
+    background-color: transparent;
+    border: none;
+    color: $brand-info;
+    font-size: 24px;
+    margin: 5px 15px;
+    padding: 0;
+  }
+
+  &__right-container {
+    display: inline-block;
+    float: right;
+    text-align: right;
+  }
+}

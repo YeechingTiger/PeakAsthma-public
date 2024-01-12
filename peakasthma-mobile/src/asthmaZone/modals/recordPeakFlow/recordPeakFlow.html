@@ -1,0 +1,33 @@
+<div class="record-peak-flow-modal">
+	<div class="modal-header">
+		<h4 class="modal-title" translate>
+			asthmaZone.modals.recordPeakFlow.header
+		</h4>
+	</div>
+	<div class="modal-body">
+		<div class="record-peak-flow-modal__card">
+			<div class="zone-range"><span id="green-zone">Green Zone Range:</span> <span>Flow > {{ peakFlow.maximum }}</span> </div>
+			<div class="zone-range"><span id="yellow-zone">Yellow Zone Range:</span> <span>{{ peakFlow.minimum }} To {{ peakFlow.maximum }}</span></div>
+			<div class="zone-range"><span id="red-zone">Red Zone Range:</span> <span>Flow &#60; {{ peakFlow.minimum }}</span></div>
+		</div>
+		<div class="record-peak-flow-modal__card">
+			<div class="record-peak-flow-modal__number-display">
+				{{ peakFlow.score }}
+			</div>
+		</div>
+		<div class="record-peak-flow-modal__card">
+			<peak-flow-slider class="record-peak-flow-modal__control" peak-flow="peakFlow"></peak-flow-slider>
+		</div>
+		<div class="record-peak-flow-modal__instructions" translate>
+			asthmaZone.modals.recordPeakFlow.instructions
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="$dismiss()" translate>
+			asthmaZone.modals.common.cancel
+		</button>
+		<button class="btn btn-default" ng-click="reportPeakFlow()" translate>
+			asthmaZone.modals.common.ok
+		</button>
+	</div>
+</div>

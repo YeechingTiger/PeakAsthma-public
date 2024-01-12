@@ -1,0 +1,19 @@
+// Define your app's color palette here using SASS variables
+
+// $primary-color: #fff;
+// $border-color: #000;
+// etc...
+$brand_primary: #4286f4;
+$brand_secondary: #4BD97A;
+$brand_success: $brand_secondary;
+$brand_warning: #F7AA20;
+
+$brand_tertiary: #4BD97A;
+$btn-tertiary-bg: $brand_tertiary !default;
+$btn-tertiary-border: darken($btn-tertiary-bg, 5%) !default;
+
+$container-background: #F1F5F8;
+
+$red-zone: #EE2F58;
+$yellow-zone: #F7AA20;
+$green-zone: #4BD97A;

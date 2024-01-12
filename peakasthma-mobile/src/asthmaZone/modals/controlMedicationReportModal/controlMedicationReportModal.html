@@ -1,0 +1,39 @@
+<div class="green-zone-modal">
+	<div class="modal-header">
+		<h4 class="modal-title" ng-if="!notification.controller_med_report" translate>
+			asthmaZone.modals.controlMedicationReportModal.header
+		</h4>
+		<h4 class="modal-title" ng-if="notification.controller_med_report" translate>
+			asthmaZone.modals.controlMedicationReportModal.rp_header
+		</h4>
+	</div>
+	<div class="modal-body" ng-if="!notification.controller_med_report">
+		<div class="modal-body__message" ng-if="prescription" translate>
+			asthmaZone.modals.controlMedicationReportModal.instructions
+		</div>
+		<div class="modal-body__message" ng-if="!prescription" translate>
+			asthmaZone.modals.controlMedicationReportModal.defaultInstructions
+		</div>
+	</div>
+	<div class="modal-body" ng-if="notification.controller_med_report">
+		<div class="modal-body__message" translate>
+			asthmaZone.modals.controlMedicationReportModal.rp_instructions
+		</div>
+	</div>
+	<div class="modal-footer" ng-if="!notification.controller_med_report">
+		<a class="btn btn-default" ui-sref="dashboard.root" ng-click="complete()" translate>
+			Taken
+		</a>
+		<button class="btn btn-default" ng-click="remindLater()" translate>
+			asthmaZone.modals.common.dismiss
+		</button>
+	</div>
+	<div class="modal-footer" ng-if="notification.controller_med_report">
+		<a class="btn btn-default" ui-sref="dashboard.root" ng-click="complete()" translate>
+			Yes
+		</a>
+		<button class="btn btn-default" ng-click="$dismiss()" translate>
+			Cancel
+		</button>
+	</div>
+</div>

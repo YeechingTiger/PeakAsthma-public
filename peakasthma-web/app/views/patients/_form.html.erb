@@ -1,0 +1,151 @@
+<div class="row">
+  <div class="col-xs-12">
+    <% if controller.action_name == "new" || controller.action_name == "create" %>
+      <%= form_tag(new_patient_url, method: "get") do %>
+        <%= label_tag("import-redcap-id", "REDCap ID:") %>
+        <%= text_field_tag("import-redcap-id") %>
+        <%= submit_tag("Import Demographic Information from REDCap", class: "btn btn-info back-btn") %>
+      <% end %>
+    <% elsif controller.action_name == "edit" || controller.action_name == "update" %>
+      <%= form_tag(edit_patient_url(params[:id]), method: "get") do %>
+        <%= label_tag("import-redcap-id", "REDCap ID:") %>
+        <%= text_field_tag("import-redcap-id") %>
+        <%= submit_tag("Import Demographic Information from REDCap", class: "btn btn-info back-btn") %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= simple_form_for @patient do |patient| %>
+  <% patient.simple_fields_for :user do |user| %>
+    <%= user.input :id, as: :hidden %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>
+              <%= t('patient.views.headers.personal_information') %>
+            </h2>
+              <div class="row">
+                <div class="col-xs-6">
+                  <%= user.input :first_name %>
+                </div>
+                <div class="col-xs-6">
+                  <%= user.input :last_name %>
+                </div>
+              </div>
+            <div class="row">
+              <div class="col-xs-4 col-md-3">
+                <%= patient.input :gender, collection: Patient::GENDERS %>
+              </div>
+              <div class="col-xs-8 col-md-3">
+                <%= patient.input :birthday, html5: true%>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <%= patient.input :weight %>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <%= patient.input :height,  input_html: { min: '0', max: '90', value: patient.object.height || '0' } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>
+              <%= t('patient.views.headers.additional_info') %>
+            </h2>
+            <div class="row">
+              <div class="col-xs-12 col-md-8">
+                <%= user.input :username %>
+                <%= user.input :email %>
+                <%= user.input :role, as: :hidden, html5: true, input_html: { value: :patient } %>
+              </div>
+              <div class="col-xs-12 col-md-4">
+                <%= patient.input :phone, placeholder: "123-456-7890" %>
+                <%= patient.input :physician %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>
+              <%= t('patient.views.headers.asthma_zone_params') %>
+            </h2>
+            <div class="row">
+              <div class="col-xs-6">
+                <%= patient.input :yellow_zone_minimum %>
+              </div>
+              <div class="col-xs-6">
+                <%= patient.input :yellow_zone_maximum %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>
+              <%= t('patient.views.headers.redcap_id') %>
+            </h2>
+            <%= patient.input :redcap_id, label: 'Record ID' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>
+              <%= t('user.views.headers.account_status') %>
+            </h2>
+            <%= user.input :disabled, as: :select, label: 'Mobile App Usage', collection: [['Active', false], ['Disabled', true]], include_blank: false %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>
+              <%= t('patient.views.headers.medication_reminders') %>
+            </h2>
+            <%= patient.input :medication_reminders, as: :hidden, wrapper: :checkbox, :input_html => { :value => 1 } %>
+            <%= patient.input :remind_later_time, as: :hidden, :input_html => { :value => 0 } %>
+            <%= patient.input :medication_reminder_time, as: :hidden, html5: true %>
+            <%= patient.simple_fields_for :time do |nf| %>
+              <%= nf.input :medication_reminder_time, as: :time, html5: true %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>
+              <%= t('patient.views.headers.report_reminders') %>
+            </h2>
+            <%= patient.input :report_reminder_time, as: :hidden, html5: true %>
+            <%= patient.simple_fields_for :time do |nf| %>
+              <%= nf.input :report_reminder_time, as: :time, html5: true %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <%= patient.button :submit, class: 'btn-default' %>
+      </div>
+    </div>
+    </div>
+    </div>
+  <% end %>
+<% end %>

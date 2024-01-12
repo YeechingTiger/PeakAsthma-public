@@ -1,0 +1,115 @@
+<div class="dashboard-header-bar__static"></div>
+<div class="container container-map dashboard-notifications-view" ng-controller="DashboardMapCtrl">
+    <!-- <div class="dashboard-root-view__card"> -->
+        <ul class="nav nav-tabs nav-fullwidth">
+            <li ng-class=" selected_tab_f() == 'map' ? 'active':''" ng-click="tabSelect(tab_type.map)"><a href="">Map</a></li>
+            <li ng-class=" selected_tab_f() == 'weather' ? 'active':''" ng-click="tabSelect(tab_type.weather)"><a href="">Weather</a></li>
+        </ul>
+        <div id="openweathermap-widget-15" ng-show="selected_tab_f() == 'weather'">
+            <div id="container-openweathermap-widget-15">
+                <link href="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/css/openweathermap-widget-right.min.css"
+                    rel="stylesheet">
+                <div class="widget-right weather-right--type1 widget-right--brown">
+                    <div class="widget-right__header widget-right__header--brown">
+                        <div class="widget-right__layout">
+                            <div>
+                                <h2 class="widget-right__title">{{ location }}</h2>
+                                <h2 class="widget-right__description">{{ forecast().currentText }}</h2>
+                            </div>
+                        </div><img ng-src="assets/imgs/weather/{{ forecast().currentIcon }}.png" width="135" height="80" alt="Weather" class="weather_img weather-right__icon weather-right__icon--type1">
+                    </div>
+                    <div class="weather-right weather-right--brown">
+                        <div class="weather-right__layout">
+                            <div class="weather-right__temperature">{{ forecast().currentTemperature | number:0 }}<span>°F</span></div>
+                            <div class="weather-right__weather">
+                                <div class="weather-right-card">
+                                    <table class="weather-right__table">
+                                        <tbody>
+                                            <tr class="weather-right__items">
+                                                <th colspan="2" class="weather-right__item">Details</th>
+                                            </tr>
+                                            <tr class="weather-right__items">
+                                                <td class="weather-right__item">Feels like</td>
+                                                <td class="weather-right__item weather-right__wind-speed">{{
+                                                    forecast().currentRealFeelTemperature | number:0}}<span>°F</span></td>
+                                            </tr>
+                                            <tr class="weather-right-card__items">
+                                                <td class="weather-right__item">Humidity</td>
+                                                <td class="weather-right__item weather-right__humidity">{{
+                                                    forecast().currentHumidity | number:0 }}%</td>
+                                            </tr>
+                                            <tr class="weather-right-card__items">
+                                                <td class="weather-right__item">Pollen level</td>
+                                                <td class="weather-right__item">{{ forecast().currentPollen }}</td>
+                                            </tr>
+                                            <!-- <tr class="weather-right-card__items">
+                                                <td class="weather-right__item">Pollen Count</td>
+                                                <td class="weather-right__item">{{ weather.rain['3h'] }}</td>
+                                            </tr> -->
+                                            <!-- <tr class="weather-right-card__items">
+                                                <td class="weather-right__item">Ozone Level</td>
+                                                <td class="weather-right__item">{{ DSWeather().ozone }}DU</td>
+                                            </tr> -->
+                                            <!-- <tr class="weather-right-card__items">
+                                                <td class="weather-right__item">UV Index</td>
+                                                <td class="weather-right__item weather-right__pressure">{{ UV() }}</td>
+                                            </tr> -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="forecast_section">
+                            <hr>
+                            <h4>Forecast for the next week</h4>
+                            <p class="forecast_sum">{{ forecast().summary }}</p>
+                            <br>
+                            <table class="week-weather">
+                                <tbody>
+                                    <tr>
+                                        <th width="20%">
+                                            Date
+                                        </th>
+                                        <th width="25%">
+                                            Weather
+                                        </th>
+                                        <th width="20%">
+                                            High
+                                        </th>
+                                        <th width="20%">
+                                            Low
+                                        </th>
+                                        <th width="15%">
+                                            Pollen
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="day in forecast().days">
+                                        <td>{{ dateToWeekday(day.date) }}</td>
+                                        <td><img class="sky_img" ng-src="assets/imgs/weather/{{ day.icon }}.png" alt="test"></td>
+                                        <td>{{ day.temperatureMax | number:0}}°F</td>
+                                        <td>{{ day.temperatureMin | number:0}}°F</td>
+                                        <td>{{ day.pollen }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="widget-right__footer widget-right__footer--brown">
+                        <div class="widget-right__layout">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+    <div class="dashboard-root-view__card" ng-show="selected_tab_f() == 'map'">
+        <div>
+                <span><img class="key_img" src="assets/imgs/hospital1.png" alt="hospital"> - hospital</span>
+                |
+                <span><img class="key_img" src="assets/imgs/pharmacy1.png" alt="pharmacy"> - pharmacy</span>
+        </div>
+
+        <ng-map id="map" default-style="false" style="height: 500px; display:block; " zoom="12" center="[{{latitude}}, {{longitude}}]"></ng-map>
+    </div>
+</div>

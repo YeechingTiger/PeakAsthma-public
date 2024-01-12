@@ -1,0 +1,52 @@
+<div class="recent-peak-flows__header">
+    PRESCRIPTION REFILL RECORD
+</div>
+
+<div class="peak-flow-table">
+
+<table class="table" id="patient-index-table">
+    <thead>
+      <tr>
+        <th>
+            PRESCRIPTION MEDICINE NAME
+        </th>
+        <th>
+            FREQUENCY
+        </th>
+        <th>
+            PRESCRIPTION REFILL DATE
+        </th>
+        <th>
+            RECORD CREATED TIME
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+        <%unless @refill_record.nil? %>
+        <% @refill_record.each do |record| %>
+        <%unless record.prescription.nil? %>
+            <tr>
+                <td>
+                    <%= record.prescription.medication.name %>
+                </td>
+                <td>
+                    <%= record.prescription.frequency.kind %>
+                </td>
+                <td>
+                    <%= l record.refill_date %>
+                </td>
+                <td>
+                    <%= l record.created_at %>
+                </td>
+            </tr>
+        <% end %>
+        <% end %>
+        <% end %>
+    </tbody>
+  </table>
+  <%unless @refill_record.nil? %>
+  <div class="digg_pagination">
+    <%= will_paginate @refill_record, :param_name => 'refill_page'%>
+  </div>
+  <% end %>
+</div>

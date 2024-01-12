@@ -1,0 +1,15 @@
+@mixin mobile-asthma-colors {
+  &__level {
+    &--green {
+      color: $green-zone;
+    }
+
+    &--yellow {
+      color: $yellow-zone;
+    }
+
+    &--red {
+      color: $red-zone;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<div class="row notification-form">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3>
+          Individual Notification For <%= @control_patient.user.first_name  %> <%= @control_patient.user.last_name  %>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-8 col-md-push-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table notification-table">
+          <thead>
+            <tr>
+              <th>
+                <%= t 'notification.labels.author' %>
+              </th>
+              <th>
+                <%= t 'notification.labels.message' %>
+              </th>
+              <th>
+                Send At
+              </th>
+              <th>
+                <%= t 'notification.labels.status' %>
+              </th>
+              <th>
+                <%= t 'notification.labels.actions' %>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @control_notifications %>
+          </tbody>
+        </table>
+        <div class="digg_pagination">
+          <%= will_paginate @control_notifications %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-4 col-md-pull-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'form_patient', notification: ControlNotification.new %>
+      </div>
+    </div> 
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'form_patient_default', notification: ControlNotification.new %>
+      </div>
+    </div>
+  </div>
+</div>

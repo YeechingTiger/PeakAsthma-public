@@ -1,0 +1,86 @@
+<% if current_user&.admin? %>
+<div class="row">
+  <div class="col-xs-12">
+    <% if controller.action_name == "new" || controller.action_name == "create" %>
+      <%= form_tag(new_patient_guardian_url(params[:patient_id]), method: "get") do %>
+        <%= label_tag("import-redcap-id", "REDCap ID:") %>
+        <%= text_field_tag("import-redcap-id") %>
+        <%= submit_tag("Import Caregiver Information from REDCap", class: "btn btn-info back-btn") %>
+      <% end %>
+    <% elsif controller.action_name == "edit" || controller.action_name == "update" %>
+      <%= form_tag(edit_patient_guardian_url(params[:patient_id], params[:id]), method: "get") do %>
+        <%= label_tag("import-redcap-id", "REDCap ID:") %>
+        <%= text_field_tag("import-redcap-id") %>
+        <%= submit_tag("Import Caregiver Information from REDCap", class: "btn btn-info back-btn") %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<%= simple_form_for [@patient, @guardian] do |guardian| %>
+  <% guardian.simple_fields_for :user do |user| %>
+  <% if current_user&.admin? %>
+  <div class="row">
+    <div class="col-xs-12">
+        <%= user.input :id, as: :hidden %>
+        <%= user.input :role, input_html: { value: 'guardian' }, as: :hidden %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-6 col-md-4">
+                  <%= user.input :first_name %>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                  <%= user.input :last_name %>
+                </div>
+                
+                <div class="col-xs-12 col-md-8">
+                  <%= user.input :email %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-9 col-md-6">
+                  <%= user.input :username %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-md-4">
+               <% if current_user&.admin? %>
+              <%= guardian.input :relationship_to_patient, collection: Guardian::RELATIONSHIP_TO_PATIENT_TYPES_TEXT, label_method: :second, value_method: :first %>
+              <% end %>
+              <%= guardian.input :notification_type, collection: Guardian::ALL_NOTIFICATION_TYPES %>
+            </div>
+            <% if current_user&.admin? %>
+            <div class="col-xs-12 col-md-4">
+              <%= guardian.input :phone, placeholder: "123-456-7890" %>
+            </div>
+            <% end %>
+          </div>
+        </div>  
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= guardian.button :submit, class: 'btn-default' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>

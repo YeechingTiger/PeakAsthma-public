@@ -1,0 +1,17 @@
+<div class="asthma-page-header">
+  <% if current_user %>
+    <button class="asthma-page-header__button", id="sidebar-button">
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+  <% elsif current_user&.patient? %>
+    <%= link_to t('navigation.labels.app_title'), root_path, id: 'patient-root-navigation' %>
+  <% end %>
+  <div class="asthma-page-header__right-container">
+    <%= render 'shared/user-account-controls' %>
+  </div>
+</div>
+<% if current_user %>
+  <div class="nav-drawer">
+    <%= render 'shared/nav' %>
+  </div>
+<% end %>

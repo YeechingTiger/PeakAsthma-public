@@ -1,0 +1,25 @@
+<table class="table" id="users-index-table">
+  <thead>
+    <tr>
+      <th>
+        <%= t('patient.model.username') %>
+      </th>
+      <th>
+        <%= t('patient.model.full_name') %>
+      </th>
+      <th>
+        <%= t('user.model.role') %>
+      </th>
+      <th>
+        <%= t('user.model.email') %>
+      </th>
+      <th>
+        <%= t('user.model.created_at') %>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>

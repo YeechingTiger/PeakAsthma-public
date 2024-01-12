@@ -1,0 +1,78 @@
+source 'https://rubygems.org'
+
+git_source(:github) do |repo|
+  repo = "#{repo}/#{repo}" unless repo.include?('/')
+  "https://github.com/#{repo}.git"
+end
+
+gem 'rails'
+gem 'metova', github: 'metova/metova-rails', branch: 'rails5'
+gem 'pg', '0.18.4'
+gem 'rack-cors', :require => 'rack/cors'
+
+gem 'coffee-rails', github: 'rails/coffee-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'normalize-rails'
+gem 'bootstrap-sass'
+gem 'sass-rails'
+gem 'turbolinks'
+gem 'uglifier'
+
+gem 'avocado-docs'
+gem 'aws-healthcheck', github: 'lserman/aws-healthcheck', branch: 'rails5'
+gem 'carrierwave'
+gem 'devise'
+gem 'foreman'
+gem 'jbuilder'
+gem 'kaminari'
+gem 'maia'
+gem 'pundit'
+gem 'puma'
+gem 'responders'
+gem 'sidekiq'
+gem 'simple_form'
+gem 'olive_branch'
+gem 'shoulda-matchers'
+gem 'will_paginate'
+gem 'activejob'
+gem 'whenever'
+gem 'twilio-ruby'
+gem 'devise_security_extension', :path => "lib/gems/devise_security_extension-0.9.2"
+gem 'ahoy_email'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f' 
+# gem 'webpacker', '~> 2.0'
+
+group :production do
+  gem 'newrelic_rpm'
+  # gem 'dalli'
+  # gem 'dalli-elasticache'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'rack-livereload'
+  gem 'spring'
+end
+
+group :development, :test do
+  gem 'listen'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'fabrication'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  # gem 'capybara-webkit', '~> 1.15.1'
+  gem 'launchy'
+  gem 'rspec-junit'
+  gem 'simplecov', require: false
+  gem 'timecop'
+  gem 'webmock'
+  gem 'webmock-rspec-helper'
+end

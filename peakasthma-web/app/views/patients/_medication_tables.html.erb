@@ -1,0 +1,48 @@
+<div class="patient-profile__table-header">
+    PRESCRIPTION INFO
+</div>
+<% @patient.prescriptions.each_with_index do |prescription, index| %>
+  <% if prescription.valid_status %>
+    <div class="panel panel-default">
+        <div class="patient-profile-table">
+            <div class="patient-profile-table__row">
+                <div class="patient-profile-table__header patient-profile-table__header--highlighted">
+                    <%= "#{t('prescription.label')} \##{(prescription.id)}" %>
+                </div>
+                <% if current_user&.admin? %>
+                <div class="patient-profile-table__cell">
+                    
+                        <% if prescription.confirm_status %>
+                          <button class="btn btn-success btn-xs" disabled>Confirmed</button>
+                        <% else %>
+                        <%= link_to patient_prescription_path(@patient, prescription, :prescription => {:confirm_status => true, :confirm_at => Time.now.getutc}),
+                              method: :patch, remote: true, id: "#{prescription.id}_read" do %>
+                            <button class="btn btn-warning btn-xs">Confirm</button>
+                          <% end %>
+                        <% end %>
+                    
+                    <%= link_to edit_patient_prescription_path(@patient, prescription), method: :get, class: 'patient-profile-table__action', id: "edit-prescription-#{prescription.id}" do %>
+                    <span class="glyphicon glyphicon-edit text-info"></span>
+                    <% end %>
+                    <%= link_to patient_prescription_path(@patient, prescription), method: :delete, data: {confirm: t('prescription.views.delete_confirm')}, class: 'patient-profile-table__action', id: "delete-prescription-#{prescription.id}" do %>
+                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                    <% end %>
+                </div>
+                <% end %>
+            </div>
+            <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('medication.model.name'), value: prescription.medication.name %>
+            <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('prescription.model.level'), value: prescription.level_names %>
+            <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('medication.model.formulation'), value: prescription.formulation.kind %>
+            <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('medication.model.dosage'), value: prescription.dosage %>
+            <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('medication.model.frequency'), value: prescription.frequency.kind %>
+            <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('prescription.model.reminder_day'), value: t("Every Month ( #{ prescription.reminder_day } )") %>
+            <!-- <% if current_user&.admin? %>
+            <%= link_to new_patient_prescription_prescription_refill_record_path(@patient, prescription), class: 'btn btn-info btn-block' do %>
+              <span class="glyphicon glyphicon-time"></span>
+              Report Refill Date
+            <% end %>
+          <% end %> -->
+        </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="<%= block_name %>__row">
+  <div class="<%= "#{block_name}__header" %> <%= "#{block_name}__header--#{header_variant}" if local_assigns[:header_variant] %>">
+    <%= header %>
+  </div>
+  <div class="<%= "#{block_name}__cell" %>">
+    <%= value %>
+  </div>
+</div>

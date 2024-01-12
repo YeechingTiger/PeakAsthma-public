@@ -1,0 +1,5 @@
+FROM metova/rails-deploy:2.4.0
+
+ENV RAILS_SERVE_STATIC_FILES 1
+
+EXPOSE 3000

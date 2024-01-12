@@ -1,0 +1,10 @@
+<!-- Must use single quotes here so the JS can render it properly -->
+<div class='peak-flow-popover'>
+  <ul class='peak-flow-popover__list'>
+    <% peak_flow.symptoms.each do |symptom| %>
+      <li>
+        <%= symptom.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>

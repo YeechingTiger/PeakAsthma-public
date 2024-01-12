@@ -1,0 +1,13 @@
+<div class="row notification-form">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% if @control_notification.alert == 9 %>
+          <%= render 'form', notification: @control_notification %>
+        <% else %>
+          <%= render 'form_patient', notification: @control_notification %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

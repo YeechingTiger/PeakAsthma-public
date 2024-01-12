@@ -1,0 +1,98 @@
+.dashboard-patient-profile-view {
+  @include dashboard-view;
+
+  &__button-card {
+    @include card;
+
+    padding: 15px;
+    .btn{
+      white-space:normal !important;
+      word-wrap: break-word; 
+    }
+  }
+
+  &__button {
+    border-radius: 25px;
+  }
+}
+
+.patient-profile-table {
+  @include card;
+  @include mobile-table;
+
+  font-size: 16px;
+  
+  &__header {
+    max-width: 50%;
+  }
+}
+
+.medication-notification-settings {
+  @include card;
+
+  &__reminder-toggle {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 8px;
+  }
+
+  &__reminder-form {
+    opacity: 1;
+    padding: 0 15px 15px;
+    label {
+      font-weight: normal;
+    }
+
+    &.ng-hide {
+      opacity: 0;
+    }
+
+    &.ng-hide-add,
+    &.ng-hide-remove {
+      transition: all linear 0.25s;
+    }
+  }
+
+  &__checkbox {
+    display: inline-block;
+    padding: 0 15px;
+  }
+
+  &__label-text {
+    display: inline-block;
+  }
+}
+
+#take_medication_time {
+  display: block;
+  text-align: center;
+  width: 220px !important;
+}
+
+.reminder {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+
+  label {
+    display: block;
+  }
+
+  input[type="time"]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+  }
+}
+
+.ion-ios-alarm-outline {
+  text-align: start !important;
+  flex: 0 !important;
+  -webkit-flex: 0 !important;
+}
+
+.ion-ios-timer-outline {
+  text-align: start !important;
+  flex: 0 !important;
+  -webkit-flex: 0 !important;
+}

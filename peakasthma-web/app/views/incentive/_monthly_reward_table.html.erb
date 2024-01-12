@@ -1,0 +1,31 @@
+<div class="peak-flow-table">
+  <table class="table" id="patient-index-table">
+    <thead>
+      <tr>
+        <th>
+          <%= t('incentive.model.month') %>
+        </th>
+        <th>
+          <%= t('incentive.model.reward_amount') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @monthly_rewards_days.each do |key, value| %>
+        <tr>
+          <td>
+            <%= key %>
+          </td>
+          <td>
+            $ <%= value * 0.75 %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if !@monthly_rewards_days || @monthly_rewards_days.empty? %>
+    <div class="peak-flow-table__no-peak-flows">
+      <%= t('incentive.views.no_values') %>
+    </div>
+  <% end %>
+</div>

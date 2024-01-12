@@ -1,0 +1,76 @@
+<div class="dashboard-header-bar__static"></div>
+<div class="dashboard-root-view container" ng-controller="DashboardRootCtrl">
+  <div class="dashboard-root-view__card">
+    <h1 class="dashboard-root-view__chart-title">
+      <span translate>
+        dashboard.common.peakFlow
+      </span>
+      <a class="dashboard-root-view__peak-flow-button ion-ios-plus-outline" ng-click="openHowAreYouFeelingModal()"></a>
+    </h1>
+    <div ng-show="getPeakFlows()" class="dashboard-root-view__peakflow">
+      <peak-flow-graph peak-flows="getPeakFlows()"></peak-flow-graph>
+    </div>
+    <div class="dashboard-root-view__date-labels">
+      <div ng-repeat="peakFlow in getPeakFlows() track by $index">
+        <p class="line_chart_time">{{ peakFlow.created | date:'MMM d' }}</p>
+        <p class="line_chart_time">{{ peakFlow.created | date:'H:mm' }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-root-view__card">
+    <h1 class="dashboard-root-view__chart-title">
+        <a class="dashboard-root-view__peak-flow-button ion-document" ></a>
+      <span>
+          Survey
+      </span>
+    </h1>
+    <br>
+    <div class="survey-card">
+      <div class="survey-card-image">
+        <img style="width: 100%;" ng-src="assets/imgs/survey.png" alt="survey">
+      </div>
+      <div ng-if="!survey_data.surveyComplete && remain_date() > 0" class="survey-card-text">
+        <div>Collect</div>
+        <div><b>$15</b></div>
+        <div>For your survey</div>
+        <div>
+          <button class="btn-custom" ng-click="link()" translate>
+            Start Survey
+          </button>
+        </div>
+        <div>
+          You have <b>{{remain_date()}}</b> days.
+        </div>
+      </div>
+      <div class="survey-card-text" ng-if="survey_data.surveyComplete || remain_date() <= 0">
+        <div>Your next survey will be due in <b>{{next_survey_countdown()}}</b> days.</div>
+      </div>
+    </div>
+</div>
+  <div class="dashboard-root-view__card">
+      <h1 class="dashboard-root-view__chart-title">
+          <a class="dashboard-root-view__peak-flow-button ion-ribbon-b" ></a>
+        <span>
+            Rewards
+        </span>
+      </h1>
+      <br>
+      <div class="reward">
+        <!-- <div>Current Week Days(Test): <input type="number" ng-model="current_week_days"></div> -->
+        <p class="reward-text"><span class="reward-required-days">Current Week</span></p>
+        <img class="img" ng-src="assets/imgs/lung_{{percentage()}}.png" alt="rewards">
+        <p><b>{{ percentage() }}%</b></p>
+        <!-- <div class="progress">
+          <div class="progress-bar" role="progressbar" ng-style="barStyle()" aria-valuenow="{{ parseInt(percentage()) }}" aria-valuemin="0" aria-valuemax="100">{{ percentage() }}%</div>
+        </div> -->
+        <!-- <div>
+          <a ng-if="current_week_days > 5" class="star-icon ion-star" ></a>
+          <a ng-if="current_week_days > 6" class="star-icon ion-star" ></a>
+        </div> -->
+        <!-- <div class="reward-history">
+          <p><b>weekly rewards:</b>${{ week_reward() }}</p>
+          <p><b>monthly rewards:</b>${{ month_reward }}</p>
+        </div> -->
+      </div>
+  </div>
+</div>

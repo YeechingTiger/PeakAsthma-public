@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <%= link_to patient_url(@patient) do %>
+    <button class="btn btn-danger back-btn">
+      Go Back
+    </button>
+  <% end %>
+  <div class="panel_table_container"> 
+    <%= render 'patients/peak_flows', peak_flows: @patient.peak_flows.order(created_at: :desc) %>
+  </div>
+</div>

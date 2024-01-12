@@ -1,0 +1,17 @@
+  <div class="activity-history-record">
+    <div class="activity-history-record__icon-cell" ng-show="unread == 'true'">
+      <span class="activity-history-record__icon icon-unread ion-email-unread"></span>
+    </div>
+    <div class="activity-history-record__icon-cell" ng-show="unread == 'false'" >
+      <span class="activity-history-record__icon activity-history-record__icon--read ion-android-drafts"></span>
+    </div>
+
+    <div class="activity-history-record__content">
+      <div class="notification-table__description">
+        {{ notification.sendAt | date: 'MM-dd-yyyy - hh:mm a' }}
+      </div>
+      <div class="activity-history-record__message">
+        {{ notification.message }}
+      </div>
+    </div>
+  </div>

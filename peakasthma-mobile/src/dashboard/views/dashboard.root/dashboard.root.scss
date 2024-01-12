@@ -1,0 +1,146 @@
+.dashboard-root-view {
+  @include dashboard-view;
+
+  &__card {
+    @include card;
+
+    padding: 15px;
+  }
+
+  &__chart-title {
+    margin: 0 0 0 10px;
+  }
+
+  &__peakflow {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__date-labels {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+p {
+  text-align: center;
+  margin: 0;
+  font-size: 12px;
+}
+
+.dashboard-root-view__date-labels div:last-child {
+  font-weight: bold;
+}
+
+.reward {
+  width: 80%;
+  margin-left: 10%;
+
+  &-text {
+    text-align: start;
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  &-required-days {
+    font-size: 18px;
+  }
+
+  &-active-days {
+    font-size: 15px;
+  }
+
+  &-history {
+    padding: 10px;
+    border: 1px solid $brand-primary;
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+
+  &-history p {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.active-days {
+  font-size: 24px;
+}
+
+.btn-c {
+  border: 2px solid $brand-primary;
+  background-color: white;
+  color: $brand-primary;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.reward .btn {
+  height: 30px;
+}
+
+.star-icon {
+  color: #ffc800;
+  font-size: 20px;
+}
+
+.progress {
+  margin-bottom: 0px;
+}
+
+.img {
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.line_chart_time {
+  font-size: 10px !important;
+}
+
+.survey-card {
+  display: flex;
+  justify-content: center;
+}
+
+.survey-card-image {
+  width: 40%;
+  display: block;
+}
+
+.survey-card-text {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-custom {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn-custom:hover {
+  background-color: #4095c6;
+}
+
+@media all and (max-width:30em) {
+  .btn-custom {
+    display: block;
+    margin: 0.2em auto;
+  }
+}

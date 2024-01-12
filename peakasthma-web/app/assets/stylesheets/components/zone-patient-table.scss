@@ -1,0 +1,17 @@
+.zone-patient-table {
+  @include mobile-asthma-table;
+  @include mobile-asthma-colors;
+
+  &__level {
+    text-align: start;
+    &--red_now {
+      color: red;
+    }
+    &--true {
+      color: green;
+    }
+    &--false {
+      color: red;
+    }
+  }
+}

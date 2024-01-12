@@ -1,0 +1,457 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+
+en:
+  time:
+    formats:
+      default: '%m-%d-%Y @ %l:%M%p %Z'
+      short: '%m-%d-%Y'
+  date:
+    formats:
+      default: '%m-%d-%Y'
+      mddyyyy: "%D"
+
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was successfully created."
+        alert: "%{resource_name} could not be created."
+      update:
+        notice: "%{resource_name} was successfully updated."
+        alert: "%{resource_name} could not be updated."
+      destroy:
+        notice: "%{resource_name} was successfully deleted."
+        alert: "%{resource_name} could not be deleted."
+
+  activerecord:
+    attributes:
+     SINGULAR_MODEL_NAME:
+        ATTRIBUTE_NAME: '' # alias to attribute
+    errors:
+      models:
+        SINGULAR_MODEL_NAME:
+          attributes:
+            ATTRIBUTE_NAME:
+              ERROR_NAME: '' # inclusion, presence, etc.
+  common:
+    labels:
+      close: 'Close'
+      search: 'Search'
+    values:
+      n_a: "N/A"
+
+  errors:
+    symptom_reports:
+      no_symptoms: 'No symptoms found.'
+
+  dashboard:
+    headers:
+      patients: 'Recent Patient Records'
+      zone_patients: 'Prolonged or Severe Exacerbation'
+      green_zone_patients: 'Green Zone Patients'
+      yellow_zone_patients: 'Yellow Zone Patients'
+      red_zone_patients: 'Red Zone Patients'
+      app_usage_rate: 'App Usage Rate'
+      incentive: 'Incentive History'
+      monthly_reward: 'Monthly Rewards'
+      reward_record: 'Patient Reward Record'
+      alert_table: 'Alert'
+
+  navigation:
+    labels:
+      app_title: 'PEAK Asthma'
+      control_app_title: 'NutriMap'
+      main_menu: 'Main Menu'
+    views:
+      dashboard: 'Dashboard'
+      profiles: 'Patient Profiles'
+      control_profiles: 'Control Patient Profiles'
+      users: 'Administrator Accounts'
+      push_notifications: 'Push Notifications'
+      control_push_notifications: 'Control Push Notifications'
+      help: 'Help'
+      medications: 'Medications'
+      symptoms: 'Symptoms'
+      patient_rewards: 'Patient Rewards'
+      patient_visits: 'Patient Visits'
+      clincard_balance_requests: "Clincard Balance Requests"
+
+  prescription:
+    label: 'Prescription'
+    views:
+      buttons:
+        create: 'Add Prescription'
+      delete_confirm: 'This will remove the prescription from the patient. Are you sure you want to delete it?'
+      confirmed_changed_delete_confirm: 'This will remove the record from the table. Are you sure you want to delete it?'
+    model:
+      medication: 'Medication'
+      dosage: 'Dosage'
+      frequency: 'Frequency'
+      frequencies:
+        as_needed: 'As needed'
+        every_4_to_6_hours: 'Every 4-6 hours'
+        four_times_daily: 'Four times daily or every 6 hours'
+        three_times_daily: 'Three times daily or every 8 hours'
+        twice_daily: 'Twice daily or every 12 hours'
+        daily: 'Daily'
+        every_other_day: 'Every other day'
+        weekly: 'Weekly'
+        twice_monthly: 'Twice monthly'
+        monthly: 'Monthly'
+      level: 'Assigned Flow Level'
+      levels:
+        green: 'Green Zone'
+        yellow: 'Yellow Zone'
+        red: 'Red Zone'
+      periods:
+        daily: 'daily'
+        weekly: 'weekly'
+        monthly: 'monthly'
+        as_needed: 'as needed'
+      formulation: 'Formulation'
+      formulations:
+        suspension_syrup: 'Suspension/Syrup'
+        tablet_pill: 'Tablet/Pill'
+        inhaled_puffs: 'Inhaled Puffs'
+        inhaled_solution: 'Inhaled Solution- # of vials'
+        injection: 'Injection'
+      quantity: 'Quantity'
+      unit: 'Unit'
+      units:
+        ml: 'ml'
+        tsp: 'tsp'
+        tablet_pill: 'tablet(s)/pill(s)'
+        puff: 'puff(s)'
+        vial: 'vial(s)'
+        injection: 'injection'
+      reminder_day: "Refill Reminder Day"
+      valid_status: "Valid Status"
+      invalid_reason: "Invalid Reason"
+      invalid_at: "Invalid At"
+      confirm_status: "Confirm Status"
+      confirm_at: "Confirmed At"
+
+  medication:
+    label: 'Medication'
+    labels:
+      create: 'Add Medication'
+      search: 'Find Medication'
+    views:
+      buttons:
+        search: 'Search Medications'
+        create: 'Create New Medication'
+      delete_confirm: 'This will permanently delete the medication. Are you sure you want to delete it?'
+    model:
+      name: 'Medication Name'
+
+  symptom:
+    label: 'Symptom'
+    views:
+      buttons:
+        create: 'Create New Symptom'
+      delete_confirm: 'This will permanently delete the symptom. Are you sure you want to delete it?'
+    model:
+      name: 'Symptom Name'
+      level: 'Peak Flow Level'
+      levels:
+        green: 'Green Zone'
+        yellow: 'Yellow Zone'
+        red: 'Red Zone'
+  
+  tip:
+    label: 'Tip'
+    views:
+      buttons:
+        create: 'Create New Tip'
+      delete_confirm: 'This will permanently delete the tip. Are you sure you want to delete it?'
+  video:
+      label: 'Video'
+      views:
+        buttons:
+          create: 'Add New Video'
+        delete_confirm: 'This will permanently delete the video. Are you sure you want to delete it?'
+
+  notification:
+    errors:
+      already_sent: 'This notification has already been sent to users.'
+    headers:
+      average_open_rate: 'Average Open Rate'
+      notifications_sent: 'Notifications Sent'
+      notifications_clicked: 'Notifications Clicked'
+      engagement_rate: 'Engagement Rate'
+    labels:
+      author: 'Author'
+      message: 'Description'
+      actions: 'Actions'
+      status: 'Status'
+    views:
+      buttons:
+        create: 'Schedule New Notification'
+      delete_confirm: 'Are you sure you want to delete this notification?'
+    model:
+      status:
+        pending: 'PENDING'
+        sent: 'SENT'
+
+  guardian:
+    views:
+      headers:
+        delete_confirm: 'Are you sure you want to delete this guardian?'
+      buttons:
+        delete: 'Remove Guardian'
+    model:
+      guardian: 'Guardian'
+      phone: 'Guardian Phone'
+
+  user:
+    views:
+      headers:
+        confirm: "You're almost done! Now create a password to securely access your account."
+        account_status: 'Account Status'
+      buttons:
+        create: 'Create New Administrator'
+        reset_password: "Reset User's Password"
+      delete_confirm: 'Are you sure you want to delete this user? If the user is a patient, all patient records will be destroyed.'
+    model:
+      created_at: 'Joined On'
+      username: 'Username'
+      email: 'E-mail'
+      phone: 'Phone'
+      physician: 'Physician'
+      start_date: 'Trial Start Date'
+      yellow_zone_range: 'Yellow Zone Range'
+      role: 'User Role'
+      roles:
+        admin: 'Admin'
+        patient: 'Patient'
+      account_status: 'Account Status'
+
+  peak_flow:
+    model:
+      level: 'Zone'
+      created_at: 'Time & Date'
+      medication: 'Medication'
+      score: 'Peak Flow'
+      symptoms: 'Symptoms'
+  
+  incentive:
+    model:
+      month: 'Month'
+      week: 'Week'
+      day: 'Day'
+      reward_amount: 'Reward Amount'
+      total_incentives: "Total Rewards"
+      month_incentives: "Monthly Rewards"
+      week_incentives: "Weekly Rewards"
+    views:
+      no_values: 'This patient is registered under a month.'
+
+  exacerbation:
+    model:
+      full_name: 'Full Name'
+      exacerbation: 'Exacerbation Type'
+      comment: 'Comment'
+      status: 'Status'
+      created_time: 'Created Time'
+      updated_time: 'Updated Time'
+      comment_btn: 'Update Comment'
+      read_btn: 'Marked As Read'
+    views:
+      read_confirm: "Marked As Read!"
+
+  reward_record:
+    model:
+      full_name: 'Full Name'
+      logging_over_date: 'Month End Date'
+      payment_due_day: 'Payment Due Date'
+      month: 'Month'
+      payment_amount: 'Payment Amount'
+      payment_status: 'Payment Status'
+      survey_status: 'Survey Status'
+      survey_date: 'Survey Completed Date'
+      comment: 'Comment'
+      report_link: 'Report'
+      comment_btn: 'Update Comment'
+      paid: 'Marked As Paid/Unpaid'
+      group: "Group"
+
+    views:
+      read_confirm_unpaid: "Marked As Unpaid!"
+      read_confirm_paid: "Marked As Paid!"
+      check_survey_status: "Check Survey Status?"
+
+  patient:
+    notifications:
+      how_are_you_feeling: 'How are you feeling?'
+      medication_reminder: "It's time to take your daily prescriptions."
+      yellow_exacerbation: "You have been in the Yellow zone too long.  Please seek medical attention."
+      red_exacerbation: "You have been in the Red zone too long.  Please seek medical attention."
+      medication_reminder: "Remember to take your asthma medication."
+      red_now_exacerbation: "You have entered severe symptoms. Seek emergency care right away."
+    views:
+      headers:
+        personal_information: 'Personal Information'
+        additional_info: 'Additional Info'
+        asthma_zone_params: 'Asthma Zone Parameters'
+        recent_peak_flows: 'Most Recent Asthma Zone Logs'
+        medication_reminders: 'Daily Medication Reminder Preferences'
+        report_reminders: 'Daily Report Reminder Preferences'
+        monthly_report: 'Monthly Report'
+        redcap_id: 'REDCap'
+        prescription_history: 'Prescription History'
+      labels:
+        green_zone_range: 'FLOW > %{max_flow}'
+        yellow_zone_range: '%{min_flow} TO %{max_flow}'
+        red_zone_range: 'FLOW < %{min_flow}'
+        zone_percentage: '%{level} Zone Percentage'
+      buttons:
+        edit: 'Edit Patient Details'
+        view_all: 'View All'
+        create: 'Create New Patient'
+      reports:
+        create_at: 'Report Period'
+        action:
+          action: 'Action'
+          view: 'View'
+          download: 'Download PDF'
+        no_values: "This patient doesn't have any monthly reports yet."
+    model:
+      full_name: 'Full Name'
+      gender: 'Gender'
+      genders:
+        male: 'Male'
+        female: 'Female'
+      weight: 'Weight'
+      height: 'Height'
+      birthday: 'Birthday'
+      race: 'Race'
+      zip_code: 'Zip Code'
+      updated_at: 'Time & Date'
+      green_zone_range: 'Green Zone Range'
+      yellow_zone_range: 'Yellow Zone Range'
+      red_zone_range: 'Red Zone Range'
+      peak_flows:
+        no_values: "This patient doesn't have any asthma zone logs."
+      redcap_id: "REDCap Record ID"
+
+  control_patient:
+    notifications:
+      daily_reminder: "Don't forget to eat fruit and vegetables and record them!"
+    views:
+      headers:
+        personal_information: 'Personal Information'
+        additional_info: 'Additional Info'
+        daily_reminders: 'Daily Reminder Preferences'
+        redcap_id: 'REDCap'
+      buttons:
+        edit: 'Edit Control Patient Details'
+        view_all: 'View All'
+        create: 'Create New Control Patient'
+    model:
+      full_name: 'Full Name'
+      gender: 'Gender'
+      genders:
+        male: 'Male'
+        female: 'Female'
+      weight: 'Weight'
+      height: 'Height'
+      birthday: 'Birthday'
+      race: 'Race'
+      zip_code: 'Zip Code'
+      updated_at: 'Time & Date'
+      redcap_id: "REDCap Record ID"
+
+  diet:
+    record: 'Diet Records'
+    created_date: 'Date'
+    fruit: 'fruit'
+    vegetable: 'vegetable'
+
+  patient_exacerbation_email:
+    yellow:
+      subject: "Yellow Patient Exacerbation Zone"
+      body:
+        intro: "This is a courtesy alert from Mobile Asthma alerting you of: %{patient}’s prolonged exacerbation."
+        prolonged_exacerbation: "Prolonged exacerbation"
+        li1_start: "recording of"
+        yellow_zone: "yellow zone"
+        li1_end: "readings on 2 or more consecutive days"
+        li2: "failing to indicate improvement (e.g. answers “no” or does not respond to the question, “are you feeling better?”) within 48 hours of a yellow zone alert."
+      footer: "Check in with your child to confirm the prolonged exacerbation and contact your doctor if symptoms do not improve. The Mobile Asthma application has provided personalized instructions on the name, dose, and frequency of your child’s rescue medication. It is possible that your child did not respond to the follow up yellow zone alert in the Mobile Asthma application and is perfectly fine. Make sure your child is properly using the application and diligently responds to the follow up messages."
+    red:
+      subject: "Red Patient Exacerbation Zone"
+      body:
+        intro: "This is a courtesy alert from Mobile Asthma alerting you of: %{patient}’s severe exacerbation."
+        severe_exacerbation: "Severe exacerbation"
+        defined: "can also be defined in 2 ways:"
+        li1_start: "2 or more"
+        red_zone: "red zone"
+        li1_end: "readings within a 1 hour period"
+        li2: "failing to indicate improvement (e.g. answers “no” or does not respond to the question, “are you feeling better?”) within 1 hour of a red zone alert."
+      footer1: "The Mobile Asthma application has provided personalized instructions for the name, dosage, and frequency for your child’s medication. For any severe exacerbation, the participant will be instructed to contact his/her healthcare provider by Mobile Asthma. Please ensure your child has taken their rescue medications. Contact their healthcare provider if they have not already done so. In the event of an emergency, call 911."
+      footer2: "It is possible that your child did not respond to the follow up red zone alert in the Mobile Asthma application and is showing improved symptoms. Make sure your child is properly using the application and diligently responds to the follow up messages."
+    shared:
+      single_greeting: "Dear %{guardian},"
+      multiple_greeting: "Dear %{guardian} and %{second_guardian},"
+      occurs_when: "occurs when:"
+      closing: "Thank you,"
+      signature: "PEAK Asthma Team"
+      or: "OR"
+  
+  guardian:
+    label: "Guardian"
+    model:
+      name: "Guardian Name"
+      phone: "Phone"
+      relationship_to_patient: "Relationship To Patient"
+      relationship:
+        child_parent: "Parent"
+        grandparent: "Grandparent"
+        self: "Self"
+        other: "Other"
+    views:
+      delete_confirm: "You will delete this guardian!"
+      buttons:
+        create: "Add Guardian"
+
+  patient_visits_record:
+    views:
+      visits_record: 'Patient Visit Record'
+      read_confirm_paid: "Marked As Paid!"
+      read_confirm_unpaid: "Marked As Unpaid!"
+    model:
+      scheduled_visit_date: 'Scheduled Visit Date'
+      visit_date: 'Visit Note'
+      payment_status: 'Payment'
+      comment: 'Comment'
+      survey_status: 'Visit Survey'
+      action: 'Action'
+
+  clincard_balance_request:
+    headers:
+      clincard_balance_requests: 'Clincard Balance Requests'
+    model:
+      full_name: 'Name'
+      group: 'Group'
+      comment: 'Comment'
+      action: 'Action'
+      created_at: 'Created At'
+      updated_at: 'Updated At'
+
+  alert_table:
+    headers:
+      alert_tables: 'Alert Table'
+    model:
+      full_name: 'Name'
+      alert: 'Alert'
+      comment: 'Comment'
+      action: 'Action'
+      created_at: 'Created At'
+      updated_at: 'Updated At'
+
+
+  simple_form:
+    # labels:
+    #   user:
+    #     email: 'Email'

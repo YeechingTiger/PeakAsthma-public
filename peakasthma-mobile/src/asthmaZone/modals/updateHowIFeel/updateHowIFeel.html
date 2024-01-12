@@ -1,0 +1,23 @@
+<div class="how-are-you-feeling-modal">
+	<div class="modal-header">
+		<h4 class="modal-title" translate>
+			asthmaZone.modals.updateHowIFeel.header
+		</h4>
+	</div>
+	<div class="modal-body">
+			<button class="btn btn-tertiary" ng-click="openDetermineAsthmaZoneModal('green'); $dismiss()" translate>
+				asthmaZone.modals.howAreYouFeeling.buttons.green
+			</button>
+			<button class="btn btn-warning" ng-click="openDetermineAsthmaZoneModal('yellow'); $dismiss()" translate>
+				asthmaZone.modals.howAreYouFeeling.buttons.yellow
+			</button>
+			<button class="btn btn-primary" ng-click="openDetermineAsthmaZoneModal('red'); $dismiss()" translate>
+				asthmaZone.modals.howAreYouFeeling.buttons.red
+			</button>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="$dismiss()" href="tel:911" translate>
+			asthmaZone.modals.common.callEMS
+		</button>
+	</div>
+</div>

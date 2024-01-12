@@ -1,0 +1,20 @@
+// Grid
+$grid-gutter-width: 30px;
+
+// Container Sizes
+$container-sm: (470px + $grid-gutter-width);
+$container-desktop: (690px + $grid-gutter-width);
+$container-large-desktop: (890px + $grid-gutter-width);
+
+table.table {
+  font-size: 12px;
+
+  thead tr th {
+    text-transform: uppercase;
+  }
+}
+
+
+.flex-row {
+  display: flex;
+}

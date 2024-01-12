@@ -1,0 +1,114 @@
+<div class="peak-flow-table">
+    <table class="table" id="patient-confirmed-changed-prescriptions-index-table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    <%= t('medication.model.name') %>
+                </th>
+                <th>
+                    <%= t('prescription.model.level') %>
+                </th>
+                <th>
+                    <%= t('medication.model.formulation') %>
+                </th>
+                <th>
+                    <%= t('medication.model.dosage') %>
+                </th>
+                <th>
+                    <%= t('medication.model.frequency') %>
+                </th>
+                <th>
+                    <%= t('prescription.model.reminder_day') %>
+                </th>
+                <th>
+                    <%= t('patient.model.created_at') %>
+                </th>
+                <th>
+                    <%= t('prescription.model.valid_status') %>
+                </th>
+                <th>
+                    <%= t('prescription.model.invalid_reason') %>
+                </th>
+                <th>
+                    <%= t('prescription.model.invalid_at') %>
+                </th>
+                <th>
+                    <%= t('prescription.model.confirm_status') %>
+                </th>
+                <th>
+                    <%= t('prescription.model.confirm_at') %>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @prescription_history.each do |prescription| %>
+            <tr>
+                <td>
+                    <%= prescription.id %>
+                </td>
+                <td>
+                    <%= prescription.medication.name %>
+                </td>
+                <td>
+                    <%= prescription.level_names %>
+                </td>
+                <td>
+                    <%= prescription.formulation.kind %>
+                </td>
+                <td>
+                    <%= prescription.dosage %>
+                </td>
+                <td>
+                    <%= prescription.frequency.kind %>
+                </td>
+                <td>
+                    <%= t("Every Month ( #{ prescription.reminder_day } )") %>
+                </td>
+                <td>
+                    <%= l prescription.created_at %>
+                </td>
+                <td>
+                    <% if prescription.valid_status %>
+                        <span style="color: green;" class="glyphicon glyphicon-ok"></span>
+                    <% else %>
+                        <span style="color: red;" class="glyphicon glyphicon-remove"></span>
+                    <% end %>
+                </td>
+                <td>
+                    <%= prescription.invalid_reason %>
+                </td>
+                <td>
+                    <% if !prescription.valid_status %>
+                    <%= l prescription.invalid_at %>
+                    <% end %>
+                </td>
+                <td>
+                     <% if prescription.confirm_status %>
+                        <span style="color: green;" class="glyphicon glyphicon-ok"></span>
+                    <% else %>
+                        <span style="color: red;" class="glyphicon glyphicon-remove"></span>
+                    <% end %>
+                </td>
+                <td>
+                    <% if prescription.confirm_status %>
+                    <%= l prescription.confirm_at %>
+                    <% end %>
+                </td>
+                <%
+=begin%>
+                <td>
+                    <%= link_to confirmed_changed_prescription_path(:confirmed_changed_prescription => {:id => confirmed_changed_prescription.id, :patient_id => confirmed_changed_prescription.patient_id}), method: :delete, data: {confirm: t('prescription.views.confirmed_changed_delete_confirm')}, class: 'patient-profile-table__action', id: "delete-prescription-#{confirmed_changed_prescription.id}" do %>
+                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                    <% end %>
+                </td>
+                <%
+=end%>
+
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

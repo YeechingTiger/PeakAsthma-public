@@ -1,0 +1,88 @@
+#openweathermap-widget-15 {
+    display: flex;
+    justify-content: center;
+}
+
+.weather-right__icon {
+    z-index: 0 !important;
+}
+
+.weather-right__temperature {
+    font-size: 50px !important;
+}
+
+.widget-right__link {
+    font-size: 15px !important;
+    margin: 0;
+    line-height: 0;
+}
+
+.weather-right--type1:first-of-type {
+    min-height: 0 !important;
+}
+
+.widget-right__footer--blue .widget-right__link:before, .widget-right__footer--brown .widget-right__link:before {
+    vertical-align: sub !important;
+}
+
+.widget-left {
+    width: 100% !important;
+}
+
+.sky_img {
+    width: 40px;
+}
+
+.week-weather {
+    width: 100%;
+}
+
+.forecast_sum {
+    text-align: left !important;
+}
+
+.forecast_section {
+    padding: 10px;
+}
+
+.weather_img {
+    margin-left: 30px;
+}
+
+#openweathermap-widget-15 {
+    display: block;
+    width: 100%;
+    padding-top: 20px !important;
+}
+
+.container-openweathermap-widget-15 {
+    width: 100% !important;
+   
+}
+
+.widget-right {
+    width: 100% !important;
+}
+
+.nav-fullwidth {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-fullwidth li {
+    width: 50% !important;
+    text-align: center;
+}
+
+li a {
+    color: #555 !important;
+}
+
+.active a{
+    color: #EE2F58 !important;
+}
+
+.key_img {
+    width: 20px;
+    height: 20px;
+}

@@ -1,0 +1,9 @@
+<h4>Send Notification Now</h4>
+<%= simple_form_for notification do |f| %>
+  <%= f.input :message, as: :text %>
+  <div class="notification_hide_time">
+    <%= f.input :send_at %>
+    <%= f.input :alert, :input_html => { :value => 9 } %>
+  </div> 
+  <%= f.button :submit, 'Send Now!', class: 'btn-primary' %>
+<% end %>

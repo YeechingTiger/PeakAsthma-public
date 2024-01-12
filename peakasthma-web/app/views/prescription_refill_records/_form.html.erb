@@ -1,0 +1,9 @@
+<%= simple_form_for [@patient, @prescription, @prescription_refill_record] do |f| %>
+<div class="col-xs-8 col-md-3">
+    <%= f.input :refill_date, as: :date, html5: true%>
+    <%= f.input :patient_id, as: :hidden, :input_html => { :value => @patient.id }%>
+    <%= f.input :prescription_id, as: :hidden, :input_html => { :value => @prescription.id } %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+</div>
+    
+<% end %>

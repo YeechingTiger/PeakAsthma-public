@@ -1,0 +1,28 @@
+<div class="red-zone-modal">
+	<div class="modal-header">
+		<h4 class="modal-title" translate>
+			asthmaZone.modals.redZoneMedicationInstructionsModal.header
+		</h4>
+	</div>
+	<div class="modal-body">
+		<div class="modal-body__message"
+				 ng-if="prescription"
+				 translate
+				 translate-values='{ dosage: prescription.dosage, medication: prescription.medication.name}'>
+			asthmaZone.modals.redZoneMedicationInstructionsModal.instructions
+		</div>
+		<div class="modal-body__message"
+				 ng-if="!prescription"
+				 translate>
+			asthmaZone.modals.redZoneMedicationInstructionsModal.defaultInstructions
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a class="btn btn-default" ui-sref="dashboard.root" ng-click="complete()" translate>
+			asthmaZone.modals.common.complete
+		</a>
+		<a class="btn btn-default" ng-click="$dismiss()" href="tel:911" translate>
+			asthmaZone.modals.common.callEMS
+		</a>
+	</div>
+</div>

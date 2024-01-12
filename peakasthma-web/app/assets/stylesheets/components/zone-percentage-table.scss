@@ -1,0 +1,20 @@
+.zone-percentage-table {
+  @include mobile-table;
+  @include mobile-asthma-colors;
+
+  &__row {
+    display: block !important;
+  }
+
+  &__header {
+    font-weight: bold;
+    word-break: break-word;
+  }
+
+  &__cell {
+    color: $brand-primary;
+    font-size: 28px;
+    font-weight: normal;
+    text-align: center;
+  }
+}

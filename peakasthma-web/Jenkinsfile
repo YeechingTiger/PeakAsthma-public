@@ -1,0 +1,73 @@
+node('docker') {
+  checkout scm
+
+  appName       = "peak-asthma"
+  gitCommit     = sh(returnStdout: true, script: 'git rev-parse --short --verify HEAD').trim()
+  containerName = "metova/${appName}"
+
+  if (!appName?.trim()) {
+    error('You must set appName!')
+  }
+
+  stage('Setup') {
+    sh 'docker volume create --name gems'
+    sh "docker-compose build"
+  }
+
+  stage('Bundle') {
+    sh 'docker-compose run --rm bundle'
+  }
+
+  stage('Test') {
+    sh 'docker-compose run --rm test'
+    step([$class: 'JUnitResultArchiver', testResults: '**/reports/junit.xml'])
+    publishHTML([reportDir: 'coverage', reportFiles: 'index.html', reportName: 'Ruby Coverage'])
+  }
+
+  stage('Containerize') {
+    awsCreds = """
+    -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+    -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+    -e AWS_DEFAULT_REGION=$AWS_REGION
+    """.replaceAll("\n", "")
+
+    // Login to ECS
+    sh "\$(docker run ${awsCreds} metova/ecr-login)"
+
+    // Store the URL to the ECS repository
+    sh "docker pull metova/ecr-get-url"
+    ecrUrl = sh returnStdout: true, script: "docker run ${awsCreds} metova/ecr-get-url"
+
+    // Build the container according to the config/deploy Dockerfile
+    sh """
+    docker build --pull \
+    --build-arg RAILS_MASTER_KEY=\$RAILS_MASTER_KEY \
+    --build-arg RAILS_ENV=\$RAILS_ENV \
+    --build-arg GIT_COMMIT=${gitCommit} \
+    -f config/deploy/Dockerfile -t ${containerName} .
+    """
+
+    // Tag and push the container to the ECS repository
+    finalImageName = "${ecrUrl}/${containerName}:${gitCommit}-${currentBuild.number}".replaceAll("\n", "")
+    sh "docker tag ${containerName}:latest ${finalImageName}"
+    sh "docker push ${finalImageName}"
+  }
+
+  stage('Deploy') {
+    echo "Generating task definition JSON configuration"
+    sh "docker run -e IMAGE=${finalImageName} -w /app/config/deploy ${containerName}:latest erb -r './variables.rb' containers.json.erb > containers.json"
+
+    echo "Registering a new ECS task definition"
+    sh "docker run -v \"$WORKSPACE\":/code ${awsCreds} metova/ecr-login aws ecs register-task-definition --cli-input-json file:///code/containers.json"
+
+    echo "Parsing ECS service name..."
+    sh "echo \"<%= ECS_SERVICE %>\" > service.erb"
+    ecsService = sh(
+      returnStdout: true,
+      script: "docker run -v \"$WORKSPACE\":/code ${containerName}:latest erb -r '/app/config/deploy/variables.rb' /code/service.erb"
+    ).replaceAll("\n", "")
+
+    echo "Updating ECS service: ${ecsService}"
+    sh "docker run ${awsCreds} metova/ecr-login aws ecs update-service --cluster ${appName} --service ${ecsService} --task-definition ${appName}"
+  }
+}

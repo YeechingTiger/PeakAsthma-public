@@ -1,0 +1,104 @@
+<div class="peak-flow-table">
+<table class="table" id="patient-index-table">
+  <thead>
+    <tr>
+      <% if root_page %>
+        <th>
+          <%= t('exacerbation.model.full_name') %>
+        </th>
+      <% end %>
+      <th>
+        <%= t('exacerbation.model.exacerbation') %>
+      </th>
+      <th>
+        <%= t('exacerbation.model.email_read?') %>
+      </th>
+      <th>
+        PHONE CALL STATUS
+      </th>
+      <th>
+        <%= t('exacerbation.model.created_time') %>
+      </th>
+      <th>
+        <%= t('exacerbation.model.updated_time') %>
+      </th>
+      <th>
+        <%= t('exacerbation.model.comment') %>
+      </th>
+      <% if current_user&.admin? %>
+        <th>
+          <%= t('exacerbation.model.action') %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @exacerbations.each do |exacerbation| %>
+      <tr>
+        <% if root_page %>
+          <td>
+            <%= link_to exacerbation.patient.full_name, patient_url(exacerbation.patient) %>
+          </td>
+        <% end %>
+        <td class="zone-patient-table__level zone-patient-table__level--<%= exacerbation.exacerbation %>">
+          <span class="glyphicon glyphicon-record"></span>
+          <% if exacerbation.exacerbation == 'red' || exacerbation.exacerbation == 'red_now' %>
+            Severe
+          <% end %>
+          <% if exacerbation.exacerbation == 'yellow' %>
+            Prolonged
+          <% end %>
+        </td>
+        <td>
+          <% if exacerbation.opened_at %>
+            <span style="color: green;" class="glyphicon glyphicon-ok"></span>
+          <% else %>
+            <span style="color: red;" class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </td>
+        <td>
+          <% if @exacerbation_phone_call_status_dict[exacerbation.id] %>
+            <%= @exacerbation_phone_call_status_dict[exacerbation.id] %>
+          <% else %>
+            N/A
+          <% end %>
+        </td>
+        <td>
+          <%= l exacerbation.created_at %>
+        </td>
+        <td>
+          <%= l exacerbation.updated_at %>
+        </td>
+        <td>
+          <%= exacerbation.comment %>
+        </td>
+        <% if current_user&.admin? %>
+          <td>
+            <%= link_to edit_exacerbation_path(exacerbation), id: "#{exacerbation.id}_edit" do %>
+              <button class="btn btn-primary btn-xs">Comment</button>
+            <% end %>
+            <%= link_to exacerbation_path(exacerbation), id: "#{exacerbation.id}_show" do %>
+              <button class="btn btn-warning btn-xs">Detail</button>
+            <% end %> 
+            <%
+=begin%>
+ <% if exacerbation.status == 1 %>
+              <%= link_to exacerbation_path(exacerbation, :exacerbation => {:status => 2}), method: :patch, remote: true, data: {confirm: t('exacerbation.views.read_confirm')}, id: "#{exacerbation.id}_read" do %>
+                <button class="btn btn-warning btn-xs">Unread</button>
+              <% end %>
+            <% end %>
+            <% if exacerbation.status == 2 %>
+              <button class="btn btn-primary btn-xs disabled">Read</button>
+            <% end %> 
+<%
+=end%>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="digg_pagination">
+  <%= will_paginate @exacerbations, :param_name => 'exacerbations_page' %>
+</div>
+</div>

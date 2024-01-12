@@ -1,0 +1,63 @@
+<div class="peak-flow-table">
+    <table class="table" id="patient-index-table">
+        <thead>
+            <tr>
+                <th>
+                    <%= t('alert_table.model.full_name') %>
+                </th>
+                <th>
+                    <%= t('alert_table.model.alert') %>
+                </th>
+                <th>
+                    <%= t('alert_table.model.comment') %>
+                </th>
+                <% if current_user&.admin? %>
+                <th>
+                    <%= t('alert_table.model.action') %>
+                </th>
+                <% end %>
+                <th>
+                    <%= t('alert_table.model.created_at') %>
+                </th>
+                <th>
+                    <%= t('alert_table.model.updated_at') %>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @alert_tables.each do |alert_table| %>
+            <tr>
+                <td>
+                    <%= link_to alert_table.patient.full_name, patient_url(alert_table.patient) %>
+                </td>
+
+                <td>
+                    <%= alert_table.alert %>
+                </td>
+
+                <td>
+                    <%= alert_table.comment %>
+                </td>
+
+
+                <% if current_user&.admin? %>
+                <td>
+                    <%= link_to edit_alert_table_path(alert_table), id: "#{alert_table.id}_edit" do %>
+                    <button class="btn btn-primary btn-xs">Comment</button>
+                    <% end %>
+                </td>
+                <% end %>
+                <td>
+                    <%= l alert_table.created_at %>
+                </td>
+                <td>
+                    <%= l alert_table.updated_at %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="digg_pagination">
+        <%= will_paginate @alert_tables, :param_name => 'alert_table_page' %>
+    </div>
+</div>

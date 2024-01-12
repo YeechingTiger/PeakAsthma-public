@@ -1,0 +1,115 @@
+<div class="peak-flow-table">
+<table class="table" id="patient-index-table">
+  <thead>
+    <tr>
+      <th>
+        <%= t('patient_visits_record.model.full_name') %>
+      </th>
+      <th>
+        <%= t('patient_visits_record.model.scheduled_visit_date') %>
+      </th>
+      <th>
+        <%= t('patient_visits_record.model.visit_note') %>
+      </th>
+      <th>
+        <%= t('patient_visits_record.model.payment_status') %>
+      </th>
+      <th>
+        <%= t('patient_visits_record.model.survey_status') %>
+      </th>
+      <th>
+        <%= t('patient_visits_record.model.comment') %>
+      </th>
+      <th>
+        <%= t('patient_visits_record.model.action') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @twelve_month_patient_visits_records.each do |patient_visits_record| %>
+      <tr>
+        
+          <td>
+            <% if patient_visits_record.class.name == "PatientVisitsRecord" %>
+              
+                <%= link_to patient_visits_record.patient.full_name, patient_url(patient_visits_record.patient) %>
+
+            <% else %>
+                <%= link_to patient_visits_record.control_patient.full_name, control_patient_url(patient_visits_record.control_patient) %>
+            <% end %>
+          </td>
+     
+        <td>
+          <% if patient_visits_record.twelve_month_scheduled_visit_date != nil %>
+            <%= l patient_visits_record.twelve_month_scheduled_visit_date, format: :short %>
+          <% else %>
+            <span style="color: red;">Missing</span>
+          <% end %>
+        </td>
+
+        <td>
+          <%= patient_visits_record.twelve_month_visit_note %>
+        </td>
+
+        <td class="zone-patient-table__level zone-patient-table__level--<%= patient_visits_record.twelve_month_payment_status %>">
+          <% if patient_visits_record.twelve_month_payment_status == true %>
+            <span class="glyphicon glyphicon-ok"></span>
+            Paid
+          <% else %>
+            <span class="glyphicon glyphicon-remove"></span>
+            Not Paid
+          <% end %>
+        </td>
+
+        <td class="zone-patient-table__level zone-patient-table__level--<%= patient_visits_record.twelve_month_survey_status %>">
+          <% if patient_visits_record.twelve_month_survey_status == true %>
+            <span class="glyphicon glyphicon-ok"></span>
+          <% else %>
+            <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </td>
+
+        <td>
+          <%= patient_visits_record.twelve_month_comment %>
+        </td>
+         <% if patient_visits_record.class.name == "PatientVisitsRecord" %>
+          <td>
+              <%= link_to edit_patient_visits_record_path(patient_visits_record, :month=>12), id: "#{patient_visits_record.id}_edit" do %>
+                <button class="btn btn-primary btn-xs">Edit</button>
+              <% end %> 
+              <% if patient_visits_record.twelve_month_payment_status == false %>
+                <%= link_to patient_visits_record_path(patient_visits_record, :patient_visits_record => {:twelve_month_payment_status => true}), method: :patch, remote: true, data: {confirm: t('patient_visits_record.views.read_confirm_paid')}, id: "#{patient_visits_record.id}_read" do %>
+                  <button class="btn btn-warning btn-xs">Not Paid</button>
+                <% end %>
+              <% end %>
+              <% if patient_visits_record.twelve_month_payment_status == true %>
+                <%= link_to patient_visits_record_path(patient_visits_record, :patient_visits_record => {:twelve_month_payment_status => false}), method: :patch, remote: true, data: {confirm: t('patient_visits_record.views.read_confirm_unpaid')}, id: "#{patient_visits_record.id}_read" do %>
+                  <button class="btn btn-primary btn-xs">Paid</button>
+                <% end %>
+              <% end %>
+          </td>
+        <% else %>
+          <td>
+              <%= link_to edit_control_patient_visits_record_path(patient_visits_record, :month=>12), id: "#{patient_visits_record.id}_edit" do %>
+                <button class="btn btn-primary btn-xs">Edit</button>
+              <% end %> 
+              <% if patient_visits_record.twelve_month_payment_status == false %>
+                <%= link_to control_patient_visits_record_path(patient_visits_record, :control_patient_visits_record => {:twelve_month_payment_status => true}), method: :patch, remote: true, data: {confirm: t('patient_visits_record.views.read_confirm_paid')}, id: "#{patient_visits_record.id}_read" do %>
+                  <button class="btn btn-warning btn-xs">Not Paid</button>
+                <% end %>
+              <% end %>
+              <% if patient_visits_record.twelve_month_payment_status == true %>
+                <%= link_to control_patient_visits_record_path(patient_visits_record, :control_patient_visits_record => {:twelve_month_payment_status => false}), method: :patch, remote: true, data: {confirm: t('patient_visits_record.views.read_confirm_unpaid')}, id: "#{patient_visits_record.id}_read" do %>
+                  <button class="btn btn-primary btn-xs">Paid</button>
+                <% end %>
+              <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="digg_pagination">
+  <%= will_paginate @twelve_month_patient_visits_records, :param_name => 'twelve_month_patient_visits_record_page' %>
+</div>
+</div>

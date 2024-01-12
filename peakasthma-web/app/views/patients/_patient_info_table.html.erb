@@ -1,0 +1,9 @@
+<div class="panel panel-default highlighted">
+  <div class="patient-profile-table highlighted">
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.full_name'), value: @patient.full_name %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.birthday'), value: @patient.birthday %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.height_in_feet'), value: @patient.height_in_feet %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.weight_in_pounds'), value: @patient.weight_in_pounds %>
+    <%= render 'shared/mobile_table_row', block_name: 'patient-profile-table', header: t('patient.model.gender'), value: t("#{@patient.gender}") %>
+  </div>
+</div>

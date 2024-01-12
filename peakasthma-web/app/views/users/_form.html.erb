@@ -1,0 +1,20 @@
+<%= simple_form_for user do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-9 col-md-6">
+          <%= f.input :username %>
+          <%= f.input :email %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= f.button :submit, class: 'btn-default' %>
+    </div>
+  </div>
+<% end %>

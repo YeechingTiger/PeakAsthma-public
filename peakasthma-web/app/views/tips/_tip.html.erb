@@ -1,0 +1,16 @@
+<tr id="<%= "tip-#{tip.id}" %>">
+  <td>
+    <%= link_to tip.tip, edit_tip_url(tip) %>
+  </td>
+  <td>
+    Week <%= t(tip.schedule) %>
+  </td>
+  <td>
+    <%= link_to "http://18.144.5.42/tip/#{tip.id}", :method => "get" do%>
+      <button class="btn btn-primary btn-xs">Send now</button>
+    <% end %>
+    <%= link_to tip, method: :delete, remote: true, data: {confirm: t('tip.views.delete_confirm')}, id: "#{tip.id}_delete" do%>
+      <span class="glyphicon glyphicon-remove pull-right text-danger"></span>
+    <% end %>
+  </td>
+</tr>

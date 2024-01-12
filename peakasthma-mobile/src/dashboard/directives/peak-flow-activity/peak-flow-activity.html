@@ -1,0 +1,25 @@
+<div class="activity-history-record">
+  <div class="activity-history-record__icon-cell">
+    <span class="activity-history-record__icon" ng-class="colorMap[peakFlow.level]"></span>
+    <p class="color_text">{{ peakFlow.level.charAt(0).toUpperCase() }}</p>
+  </div>
+  <div class="activity-history-record__content">
+    <div class="activity-history-record__date">
+      {{ peakFlow.created | date: 'MM-dd-yyyy - hh:mm a' }}
+    </div>
+    <div class="activity-history-record__message" ng-if="peakFlow.score" translate translate-values="{ score: peakFlow.score, feeling: peakFlow.feeling }">
+      dashboard.activityHistory.peakFlow.score
+    </div>
+    <div class="activity-history-record__message" ng-if="peakFlow.symptoms.length">
+      <div translate translate-values="{feeling: peakFlow.feeling}">dashboard.activityHistory.peakFlow.symptoms</div>
+      <ul>
+        <li ng-repeat="symptom in peakFlow.symptoms">
+          {{ symptom.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="activity-history-record__message" ng-if="peakFlow.symptoms.length == 0 && !peakFlow.score" translate>
+      dashboard.activityHistory.peakFlow.greenZone
+    </div>
+  </div>
+</div>

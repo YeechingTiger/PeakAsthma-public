@@ -1,0 +1,26 @@
+<div class="dashboard-header-bar__static"></div>
+<div class="dashboard-notifications-view container" ng-controller="DashboardNotificationsCtrl">
+  <div class="dashboard-activity-history-view__loader" ng-show="showLoader()">
+      <span class="ion-load-a"></span>
+  </div>
+  <div class="notification-table">
+    <div ng-repeat="notification in unreadNotifications()">
+      <survey-link ng-if="notification.message && notification.alert == 11" notification="notification" text="notification.text" link="notification.link" unread="true"></survey-link>
+      <notice-box ng-if="notification.message && notification.alert != 11" notification="notification" unread="true"></notice-box>
+    </div>
+  </div>
+  <hr class="hr-text" data-content="OLD MESSAGE">
+  <div>
+    <div class="notification-row" ng-repeat="activity in mergeResults() | limitTo: notificationsToShow">
+      <survey-link ng-if="activity.message && activity.alert == 11" notification="activity" text="activity.text" link="activity.link" unread="false"></survey-link>
+      <notice-box ng-if="activity.message && activity.alert != 11" notification="activity" unread="false"></notice-box>
+      <peak-flow-activity ng-if="activity.peakFlow" peak-flow="activity.peakFlow" color-map="colorMap"></peak-flow-activity>
+      <prescription-activity ng-if="activity.takenPrescriptionRecord" activity="activity" color-map="colorMap"></prescription-activity>
+    </div>
+    <div class="notification-table__row notification-table__row--button-row" ng-hide="notificationsToShow > mergeResults().length">
+      <button ng-click="showMoreNotifications()" class="btn notification-table__btn" translate>
+        dashboard.common.showMore
+      </button>
+    </div>
+  </div>
+</div>

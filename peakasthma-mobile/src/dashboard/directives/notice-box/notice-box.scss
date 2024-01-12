@@ -1,0 +1,15 @@
+.notification-table__cell {
+    background-color: white;
+    @include card;
+    display: flex;
+    padding: 15px;
+}
+
+.notification-table__row {
+    padding: 0 !important;
+}
+
+.icon-unread {
+    background-color: #66c2ff;
+    color: #fff;
+}

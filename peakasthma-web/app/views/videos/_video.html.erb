@@ -1,0 +1,22 @@
+<tr id="<%= "video-#{video.id}" %>">
+  <td>
+    <%= link_to video.video_name, edit_video_url(video) %>
+  </td>
+  <td>
+    <%= link_to video.url, "https://app.vidscrip.com/vidscrip/#{video.url}?qs=1&q=1", target: :_blank %>
+  </td>
+  <td>
+    <%= t(video.week) %>
+  </td>
+  <td>
+    <%= t(video.day) %>
+  </td>
+  <td>
+    <%= video.patients.length %>
+  </td>
+  <td>
+    <%= link_to video, method: :delete, remote: true, data: {confirm: t('video.views.delete_confirm')}, id: "#{video.id}_delete" do%>
+      <span class="glyphicon glyphicon-remove pull-right text-danger"></span>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,36 @@
+.peak-flow-table {
+  @include mobile-asthma-table;
+  @include mobile-asthma-colors;
+
+  &__level {
+    text-align: center;
+    &--red_now {
+      color: red;
+    }
+  }
+
+  &__symptom-badge {
+    color: $brand-primary;
+    text-transform: uppercase;
+    font-size: 9px;
+    border-radius: 3px;
+    padding: 2px;
+    border: 1px solid $brand-primary;
+    cursor: pointer;
+  }
+
+  &__no-peak-flows {
+    text-align: center;
+    margin: 20px;
+  }
+}
+
+.panel_table_container {
+  margin: 15px;
+}
+
+.back-btn {
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

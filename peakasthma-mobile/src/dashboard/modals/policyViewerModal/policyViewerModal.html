@@ -1,0 +1,74 @@
+<div id="policyViewerModal" class="policy-viewer-modal" ng-show="!termOfService">
+  <div class="modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" translate>
+          dashboard.modals.policyViewerModal.header
+        </h4>
+      </div>
+      <div>
+        <script>
+          $(function(){
+            $("#includedContent").load("http://peakasthma.org/peakasthma/privacy_policy.html");
+          });
+        </script>
+        <div id="includedContent"></div>
+      </div>
+      <div class="modal-footer" ng-if="accepted">
+        <button class="btn btn-default" ng-click="showTermOfService()">
+          View Terms of Service
+        </button>
+        <button class="btn btn-default" ng-click="donePolicy()">
+          Cancel
+        </button>
+      </div>
+      <div class="modal-footer" ng-if="!accepted">
+        <button class="btn btn-default" ng-click="showTermOfService()">
+          View Terms of Service
+        </button>
+        <button class="btn btn-default" ng-click="declinePolicy()">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="policyViewerModal" class="policy-viewer-modal" ng-show="termOfService">
+  <div class="modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" translate>
+          dashboard.modals.policyViewerModal.header_term
+        </h4>
+      </div>
+      <div>
+        <script>
+          $(function(){
+            $("#includedContent_term").load("http://peakasthma.org/peakasthma/term_of_service.html");
+          });
+        </script>
+        <div id="includedContent_term"></div>
+      </div>
+      <div class="modal-footer" ng-if="accepted">
+        <button class="btn btn-default" ng-click="showPolicy()">
+          View Privacy Policy
+        </button>
+        <button class="btn btn-default" ng-click="donePolicy()">
+          Cancel
+        </button>
+      </div>
+      <div class="modal-footer" ng-if="!accepted">
+        <button class="btn btn-default" ng-click="showPolicy()">
+          View Privacy Policy
+        </button>
+        <button class="btn btn-default" ng-click="acceptPolicy()">
+          Accept
+        </button>
+        <button class="btn btn-default" ng-click="declinePolicy()">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

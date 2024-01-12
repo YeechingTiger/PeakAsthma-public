@@ -1,0 +1,18 @@
+<svg class="peak-flow-graph">
+  <linearGradient id="peak-flow-graph__gradient" class="peak-flow-graph__gradient" x1="0" x2="0" y1="0" y2="1">
+    <stop class="start" offset="25%" ></stop>
+    <stop class="stop" offset="100%" ></stop>
+  </linearGradient>
+  <path ng-repeat="peakFlow in peakFlows track by $index" class="peak-flow-graph__trend-line" ng-attr-d="{{ getLinePath($index) }}" stroke="#66c2ff" fill="none"></path>
+  <!-- <path class="peak-flow-graph__trend-area"  ng-attr-d="{{ getAreaPath() }}"></path> -->
+  <!-- <text class="peak-flow-graph__label" ng-attr-x="{{ getNodeXPosition(peakFlows.length - 1) }}" ng-attr-y="{{ getNodeYPosition(peakFlows.length - 1) - 9 }}">
+    {{ peakFlows[peakFlows.length - 1].level }}
+  </text> -->
+  <g ng-repeat="peakFlow in peakFlows track by $index">
+      <circle class="peak-flow-graph__data-point"  ng-attr-cx="{{ getNodeXPosition($index) }}"
+      ng-attr-cy="{{ getNodeYPosition($index) }}"  fill="{{ peakFlow.color }}"  ng-attr-r='12'; ></circle>
+      <text ng-attr-x="{{ getNodeXPosition($index) }}"
+      ng-attr-y="{{ getNodeYPosition($index) }}" text-anchor="middle" stroke="white" stroke-width="1px" fill="white" dy="4px">{{ peakFlow.level.charAt(0).toUpperCase() }}</text>
+  </g>
+  
+</svg>

@@ -1,0 +1,23 @@
+postgres: &postgres
+  adapter: postgresql
+  encoding: utf8
+
+  # host: <%= ENV.fetch('DB_HOST', Rails.application.secrets.db_host) %>
+  # database: <%= ENV.fetch('DB_NAME', Rails.application.secrets.db_name) %>
+  # username: <%= ENV.fetch('DB_USERNAME', Rails.application.secrets.db_user) %>
+  # password: <%= ENV.fetch('DB_PASSWORD', Rails.application.secrets.db_password) %>
+  
+test:
+  <<: *postgres
+  database: <%= ENV.fetch('DB_NAME', Rails.application.secrets.db_name) %>_test
+
+development:
+  <<: *postgres
+
+staging:
+  <<: *postgres
+  pool: 25
+
+production:
+  <<: *postgres
+  pool: 25

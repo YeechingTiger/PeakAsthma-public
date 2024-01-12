@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-8">
+    <div class="panel panel-default">
+      <div class="panel-body text-center">
+        <%= link_to t('symptom.views.buttons.create'), new_symptom_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table" id="symptoms-index-table">
+      <thead>
+        <tr>
+          <th>
+            <%= t('symptom.model.name') %>
+          </th>
+          <th>
+            <%= t('symptom.model.level') %>
+          </th>
+          <th>
+            Category
+          </th>
+          <th>
+            Emergency
+          </th>
+          <th>
+            ACTION
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @symptoms %>
+      </tbody>
+    </table>
+    <%= will_paginate @symptoms %>
+  </div>
+</div>

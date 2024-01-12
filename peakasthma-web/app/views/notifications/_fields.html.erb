@@ -1,0 +1,12 @@
+<%= simple_fields_for :notification do |f| %>
+    <div class="row">
+        <% if type == "true" %>
+            <%= f.input :message, :as => :select, 
+                        :collection => Tip.all.map { |f| f.tip}, 
+                        :include_blank => false, 
+                        :label => "Tip Message" %>
+        <% else %>
+            <%= f.input :message, as: :text %>
+        <% end %>
+    </div>
+<% end %>

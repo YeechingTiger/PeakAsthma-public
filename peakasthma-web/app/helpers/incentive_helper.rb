@@ -1,0 +1,2 @@
+module IncentiveHelper
+end

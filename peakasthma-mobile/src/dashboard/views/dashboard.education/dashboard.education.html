@@ -1,0 +1,28 @@
+<div class="dashboard-header-bar__static"></div>
+<div class="dashboard-edu-view container" ng-controller="DashboardEducationCtrl">
+  <div class="content-container">
+    <div class="edu-record">
+      <div class="tip-header">
+        <a class="dashboard-nav-bar__button ion-ios-lightbulb-outline"></a>
+        <p>Tip</p>
+      </div>
+      {{ tip_content }}
+    </div>
+    <br>
+    <h4>Video List</h4>
+
+    <select class="select" ng-model="selectedVideo">
+      <option value="">----Please select a video----</option>
+      <option ng-repeat="video in video_display()" value="{{ process_url(video.url) }}">
+        {{ video.videoName }}
+      </option>
+    </select>
+    <br>
+    <div class="vedio_container">
+      <div class="vedio_container">
+        <iframe ng-src="{{ return_url(selectedVideo) }}" width="98%" height="400px" frameBorder="0"></iframe>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.login-view {
+  @include grid-container;
+}
+
+.forget-password {
+  text-align: center;
+  margin-top: 15px;
+
+  a {
+    color: rgb(0, 100, 255);
+  }
+}
+
+.policy {
+  text-align: center;
+  margin-top: 15px;
+
+  a {
+    color: rgb(255, 45, 30);
+  }
+}

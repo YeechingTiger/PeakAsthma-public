@@ -1,0 +1,13 @@
+.separator {
+  width: 10px;
+}
+
+.search-bar {
+  display: flex;
+
+  .form-group {
+    flex: 1;
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+}

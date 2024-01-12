@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-body mobile-asthma-statistic mobile-asthma-statistic--<%= variant %>">
+    <div class="mobile-asthma-statistic__percentage">
+      <%= "#{percentage.round}%" if defined?(percentage) %>
+      <%= value.round if defined?(value.present?) %>
+    </div>
+    <div class="mobile-asthma-statistic__label">
+      <%= label %>
+    </div>
+  </div>
+</div>

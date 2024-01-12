@@ -1,0 +1,15 @@
+.notification-table {
+  margin: -5px 0;
+
+  &__author {
+    white-space: nowrap;
+  }
+
+  &__actions {
+    white-space: nowrap;
+  }
+}
+
+.notification_hide_time {
+  display: none;
+}

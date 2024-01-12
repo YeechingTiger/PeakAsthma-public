@@ -1,0 +1,42 @@
+<div class="yellow-zone-modal">
+	<div class="modal-header">
+		<h4 ng-if="model_state !== null" class="modal-title" translate>
+			asthmaZone.modals.yellowZoneMedicationInstructionsModal.header
+		</h4>
+		<h4 ng-if="model_state === null" class="modal-title">
+			Yellow Zone Medication Reminder
+		</h4>
+	</div>
+	<div class="modal-body">
+		<div class="modal-body__message"
+				 ng-if="model_state"
+				 translate
+				 translate-values='{ dosage: prescription.dosage, medication: prescription.medication.name}'>
+			asthmaZone.modals.yellowZoneMedicationInstructionsModal.instructions
+		</div>
+		<div class="modal-body__message"
+				 ng-if="model_state === undefined"
+				 translate>
+			asthmaZone.modals.yellowZoneMedicationInstructionsModal.defaultInstructions
+		</div>
+		<div class="modal-body__message"
+				 ng-if="model_state === null && prescription"
+				 translate
+				 translate-values='{ dosage: prescription.dosage, medication: prescription.medication.name}'>
+			asthmaZone.modals.yellowZoneMedicationInstructionsModal.re_instructions
+		</div>
+		<div class="modal-body__message"
+				 ng-if="model_state === null && !prescription"
+				 translate>
+				 Remember to take your red zone medications.
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a class="btn btn-default" ui-sref="dashboard.root" ng-click="complete()" translate>
+			Taken
+		</a>
+		<button class="btn btn-default" ng-click="remindLater()" translate>
+			asthmaZone.modals.common.dismiss
+		</button>
+	</div>
+</div>

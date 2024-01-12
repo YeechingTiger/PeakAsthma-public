@@ -1,0 +1,64 @@
+<div class="dashboard-view" ng-controller="DashboardCtrl">
+  <div class="dashboard-view__ui-view" ui-view></div>
+  <div class="dashboard-header-bar">
+    <div class="covid-notification">
+      <h5>COVID-19 Update:</h5>
+      <p>Please continue logging and doing your monthly surveys as normal.</p>
+    </div>
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <a ng-if="showBtn()" class="back_btn ion-arrow-left-c" ui-sref="dashboard.patientProfile" ui-sref-opts="{ events: ['touchend'] }"></a>
+        <a ng-if="false" class="cancel_btn ion-close-circled" href="https://peakasthma.org"></a>
+        <p class="navbar-brand">{{ header }}</p>
+      </div>
+      <div class="login-view__errors">
+        <div class="alert alert-danger alert-dismissible show" role="alert" ng-repeat="error in errors()">
+          <button type="button" class="close" ng-click="closeError();">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div>{{ error }}</div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="dashboard-nav-bar">
+    <div class="dashboard-nav-bar__container">
+      <a
+        class="dashboard-nav-bar__button ion-ios-person-outline"
+        ui-sref="dashboard.patientProfile"
+        ui-sref-opts="{ events: ['touchend'] }"
+        ng-class="{ 'dashboard-nav-bar__button--active': highlightPersonalProfile() }">
+      </a>
+      <a
+        class="dashboard-nav-bar__button ion-stats-bars"
+        ui-sref="dashboard.root"
+        ui-sref-opts="{ events: ['touchend'] }"
+        ui-sref-active="dashboard-nav-bar__button--active">
+      </a>
+      <a
+        class="dashboard-nav-bar__button ion-ios-plus-empty"
+        ng-click="openHowAreYouFeelingModal()">
+      </a>
+      <a
+        class="dashboard-nav-bar__button ion-ios-email-outline"
+        ui-sref="dashboard.notifications"
+        ui-sref-opts="{ events: ['touchend'] }"
+        ui-sref-active="dashboard-nav-bar__button--active">
+        <unread-notification-badge></unread-notification-badge>
+      </a>
+      <a
+        class="dashboard-nav-bar__button ion-university"
+        ui-sref="dashboard.education"
+        ui-sref-opts="{ events: ['touchend'] }"
+        ui-sref-active="dashboard-nav-bar__button--active">
+      </a>
+      <a
+        class="dashboard-nav-bar__button ion-map"
+        ui-sref="dashboard.map"
+        ui-sref-opts="{ events: ['touchend'] }"
+        ui-sref-active="dashboard-nav-bar__button--active">
+      </a>
+    </div>
+  </div>
+</div>

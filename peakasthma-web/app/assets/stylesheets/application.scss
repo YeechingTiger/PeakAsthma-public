@@ -1,0 +1,23 @@
+//
+//= normalize-rails
+//= require_self
+//= require jquery-ui
+//
+@import "_colors";
+@import "bootstrap-overrides";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "mixins/*";
+@import "components/*";
+
+body {
+  font-family: Helvativa, arial, sans-serif;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 18px;
+}

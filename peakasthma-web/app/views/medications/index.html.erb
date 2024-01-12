@@ -1,0 +1,57 @@
+<div class="row table-row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= simple_form_for :search, url: medications_path, method: :get, wrapper: :search, html: { class: 'search-bar' } do |f| %>
+          <%= f.input :name, as: :search, required: false %>
+          <% if params[:search] && params[:search]["name"] != "" %>
+            <%= link_to "Clear", {}, class: 'btn btn-success', method: :get%>       
+          <% end %>
+          <span class="separator"></span>
+          <%= f.submit t('common.labels.search'), class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body text-center">
+        <%= link_to t('medication.views.buttons.create'), new_medication_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table" id="medications-index-table">
+      <thead>
+        <tr>
+          <th>
+            <%= t('medication.model.name') %>
+          </th>
+          <th>
+            <%= t('medication.model.type') %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @medications.each do |medication| %>
+          <tr>
+            <td>
+              <%= link_to medication.name, medication_url(medication) %>
+            </td>
+            <td>
+              <%= t("medication.model.type.#{MedicationType.find(medication.type_id).kind}") %>
+            </td>
+            <td>
+              <%= link_to medication, method: :delete, remote: true, data: {confirm: t('medication.views.delete_confirm')}, id: "#{medication.id}_delete" do%>
+                <span class="glyphicon glyphicon-remove pull-right text-danger"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @medications %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<% flash.select { |k, v| k.in? %w[alert notice error] }.each do |k, v| %>
+  <div class="alert alert-<%= k %> alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-label="<%= t('common.labels.close') %>">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <%= v %>
+  </div>
+<% end %>

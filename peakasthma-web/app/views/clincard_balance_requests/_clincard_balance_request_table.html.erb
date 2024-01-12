@@ -1,0 +1,70 @@
+<div class="peak-flow-table">
+    <table class="table" id="patient-index-table">
+        <thead>
+            <tr>
+                <th>
+                    <%= t('clincard_balance_request.model.full_name') %>
+                </th>
+                <th>
+                    <%= t('clincard_balance_request.model.group') %>
+                </th>
+                <th>
+                    <%= t('clincard_balance_request.model.comment') %>
+                </th>
+                <% if current_user&.admin? %>
+                <th>
+                    <%= t('clincard_balance_request.model.action') %>
+                </th>
+                <% end %>
+                <th>
+                    <%= t('clincard_balance_request.model.created_at') %>
+                </th>
+                <th>
+                    <%= t('clincard_balance_request.model.updated_at') %>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @clincard_balance_requests.each do |clincard_balance_request| %>
+            <tr>
+                <td>
+                    <% if clincard_balance_request.user.patient %>
+                    <%= link_to clincard_balance_request.user.patient.full_name, patient_url(clincard_balance_request.user.patient) %>
+                    <% elsif clincard_balance_request.user.control_patient %>
+                    <%= link_to clincard_balance_request.user.control_patient.full_name, control_patient_url(clincard_balance_request.user.control_patient) %>
+                    <% end %>
+                </td>
+                <td>
+                    <% if clincard_balance_request.user.patient %>
+                    <b>PEAKmAAP</b>
+                    <% else %>
+                    <b>UC NutriMap</b>
+                    <% end %>
+                </td>
+
+                <td>
+                    <%= clincard_balance_request.comment %>
+                </td>
+
+
+                <% if current_user&.admin? %>
+                <td>
+                    <%= link_to edit_clincard_balance_request_path(clincard_balance_request), id: "#{clincard_balance_request.id}_edit" do %>
+                    <button class="btn btn-primary btn-xs">Comment</button>
+                    <% end %>
+                </td>
+                <% end %>
+                <td>
+                    <%= l clincard_balance_request.created_at %>
+                </td>
+                <td>
+                    <%= l clincard_balance_request.updated_at %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="digg_pagination">
+        <%= will_paginate @clincard_balance_requests, :param_name => 'clincard_balance_request_page' %>
+    </div>
+</div>

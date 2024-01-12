@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>
+            3rd Month <%= t('patient_visits_record.views.visits_record') %> (Upcoming in 14 days)
+          </h1>
+        </div>
+        <%= render 'patient_visits_records/3_month_visits_record_table' %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>
+            12th Month <%= t('patient_visits_record.views.visits_record') %> (Upcoming in 90 days)
+          </h1>
+        </div>
+        <%= render 'patient_visits_records/12_month_visits_record_table' %>
+      </div>
+    </div>
+</div>

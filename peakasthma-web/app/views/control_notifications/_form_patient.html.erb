@@ -1,0 +1,14 @@
+<h4>Schedule Notification</h4>
+<%= simple_form_for [@control_patient, @control_notification] do |f| %>
+  <%= f.input :message, as: :text %>
+  <%= f.input :send_at, as: :hidden, html5: true %>
+  <%= f.simple_fields_for :datetime do |nf| %>
+    <%= nf.input :send_at, as: :datetime, html5: true %>
+  <% end %>
+  <div class="notification_hide_time">
+    <%= f.input :alert, :input_html => { :value => 10 } %>
+    <%= f.input :target_patient, :input_html => { :value => @control_patient.id } %>
+  </div> 
+
+  <%= f.button :submit, class: 'btn-primary' %>
+<% end %>

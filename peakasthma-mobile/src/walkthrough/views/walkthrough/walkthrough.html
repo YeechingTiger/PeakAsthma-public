@@ -1,0 +1,17 @@
+<div class="walkthrough-view" ng-controller="WalkthroughCtrl">
+  <uib-carousel class="walkthrough-view__carousel" no-wrap="true" active="active" template-url="src/walkthrough/views/walkthrough/walkthrough-carousel.html">
+    <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+      <section class="walkthrough-slide">
+        <div class="walkthrough-slide__image-cell walkthrough-slide__image-cell--{{slide.id}}">
+          <img ng-src="{{ slide.imgPath }}" class="walkthrough-slide__image">
+        </div>
+        <div class="walkthrough-slide__header">
+          <h1 translate>{{ slide.header }}</h1>
+        </div>
+        <div class="walkthrough-slide__description">
+          <p translate>{{ slide.description }}</p>
+        </div>
+      </section>
+    </uib-slide>
+  </uib-carousel>
+</div>

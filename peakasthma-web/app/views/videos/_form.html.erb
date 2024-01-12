@@ -1,0 +1,11 @@
+<%= simple_form_for video do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :video_name %>
+      <%= f.input :url %>
+      <%= f.input :week %>
+      <%= f.input :day %>
+    </div>
+  </div>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

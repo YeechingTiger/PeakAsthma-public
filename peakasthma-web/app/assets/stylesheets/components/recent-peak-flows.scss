@@ -1,0 +1,14 @@
+.recent-peak-flows {
+  &__header {
+    border-bottom: 2px solid #ddd;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 15px;
+    text-transform: uppercase;
+  }
+
+  &__view-all {
+    font-size: 10px;
+    padding-left: 15px;
+  }
+}

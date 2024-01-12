@@ -1,0 +1,133 @@
+.walkthrough-view {
+    @include grid-container;
+    height: 100%;
+
+    &__progress-button {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      border-radius: 0;
+      height: 50px;
+    }
+
+    &__skip {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      display: block;
+      height: 50px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &__carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      .carousel-control {
+        display: none;
+      }
+
+      .carousel-inner {
+        height: 100%;
+
+        .item {
+          height: 100%;
+        }
+      }
+
+      .carousel-indicators {
+        bottom: 60px;
+
+        li {
+          background-color: #ccc;
+
+          &.active {
+            background-color: $brand-success;
+          }
+        }
+      }
+    }
+}
+
+.walkthrough-slide {
+  height: 100%;
+  padding: 15px 15px 100px 15px;
+
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &__image-cell {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &--0 {
+      background: url('assets/imgs/Style2.png');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    &--1 {
+      background: url('assets/imgs/Style4.png');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    &--2 {
+      background: url('assets/imgs/Style8.png');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    &--3 {
+      background: url('assets/imgs/Style9.png');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__image {
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__header {
+    flex: 1;
+    position: relative;
+    h1 {
+      font-size: 18px;
+    }
+  }
+
+  &__description {
+    flex: 1;
+    p {
+      color: #aaa;
+      font-weight: 200;
+      line-height: 28px;
+      font-size: 14px;
+    }
+  }
+}

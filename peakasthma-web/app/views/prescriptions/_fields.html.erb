@@ -1,0 +1,32 @@
+<%= simple_fields_for :prescription do |f| %>
+  <div class="row">
+    <% if FormulationType.find(formulation.id).kind == FormulationType::FORMULATIONS[:suspension_syrup] %>
+      <div class="col-md-4 col-xs-8">
+        <%= f.input :quantity %>
+      </div>
+      <div class="col-md-5 col-xs-8">
+        <%= f.input :unit_id, collection: UnitType.where(kind: UnitType::UNITS[FormulationType::FORMULATIONS[:suspension_syrup]].values).all, label_method: :kind %>
+      </div>
+    <% elsif FormulationType.find(formulation.id).kind == FormulationType::FORMULATIONS[:tablet_pill] %>
+      <div class="col-md-4 col-xs-8">
+        <%= f.input :quantity %>
+      </div>
+      <div class="col-md-5 col-xs-8">
+        <%= f.input :unit_id, collection: UnitType.where(kind: UnitType::UNITS[FormulationType::FORMULATIONS[:tablet_pill]].values).all, label_method: :kind %>
+      </div>
+    <% else %>
+      <div class="col-md-9 col-xs-8">
+        <%= f.input :quantity, collection: Prescription::DOSAGE[formulation.kind] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-xs-12">
+      <% if FormulationType.find(formulation.id).kind == FormulationType::FORMULATIONS[:injection] %>
+        <%= f.input :frequency_id, collection: FrequencyType.where(kind: FrequencyType::FREQUENCIES[:injections].values).all, label_method: :kind %>
+      <% else %>
+        <%= f.input :frequency_id, collection: FrequencyType.where(kind: FrequencyType::FREQUENCIES[:medications].values).all, label_method: :kind %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

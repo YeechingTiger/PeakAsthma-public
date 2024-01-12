@@ -1,0 +1,102 @@
+en:
+  helpers:
+    submit:
+      notification:
+        create: "Schedule Push Notification"
+      control_notification:
+        create: "Schedule Push Notification"
+      prescription_refill_record:
+        create: "Report The Refill Date"
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      prescription_refill_record:
+        refill_date: "Please Select a Date To Report:"
+      medication:
+        name: 'Medication Name'
+      notification:
+        message: 'Message'
+        send_at: 'Send Notification At'
+        datetime:
+          send_at: 'Send Notification At'
+      prescription:
+        medication: 'Medication'
+        level: 'Peak Flow Level'
+        quantity: 'Quantity'
+        unit: 'Unit'
+        frequency: 'Frequency'
+        reminder_day: "Refill Reminder Day"
+      patient:
+        medication_reminders: 'Patient receives daily medication reminders.'
+        medication_reminder_time: 'Patient usually takes their medication at:'
+        height: 'Height (inches)'
+        weight: 'Weight (lbs)'
+      control_patient:
+        height: 'Height (inches)'
+        weight: 'Weight (lbs)'
+    options:
+      symptom:
+        level:
+          green: 'Green Zone'
+          yellow: 'Yellow Zone'
+          red: 'Red Zone'
+      prescription:
+        frequency:
+          as_needed: 'As needed'
+          every_4_to_6_hours: 'Every 4-6 hours'
+          four_times_daily: 'Four times daily or every 6 hours'
+          three_times_daily: 'Three times daily or every 8 hours'
+          twice_daily: 'Twice daily or every 12 hours'
+          daily: 'Daily'
+          every_other_day: 'Every other day'
+          weekly: 'Weekly'
+          twice_monthly: 'Twice monthly'
+          monthly: 'Monthly'
+        formulation: 'Formulation'
+        formulations:
+          suspension_syrup: 'Suspension/Syrup'
+          tablet_pill: 'Tablet/Pill'
+          inhaled_puffs: 'Inhaled Puffs'
+          inhaled_solution: 'Inhaled Solution- # of vials'
+          injection: 'Injection'
+        unit: ''
+        units:
+          ml: 'ml'
+          tsp: 'tsp'
+          tablet_pill: 'tablet(s)/pill(s)'
+          puff: 'puff(s)'
+          vial: 'vial(s)'
+          injection: 'injection'
+        level:
+          green: 'Green Zone'
+          yellow: 'Yellow Zone'
+          red: 'Red Zone'
+
+    # Examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    # include_blanks:
+    #   defaults:
+    #     age: 'Rather not say'
+    # prompts:
+    #   defaults:
+    #     age: 'Select your age'

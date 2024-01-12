@@ -1,0 +1,19 @@
+<tr id="<%= "symptom-#{symptom.id}" %>">
+  <td>
+    <%= link_to symptom.name, edit_symptom_url(symptom) %>
+  </td>
+  <td class="symptoms-index-table__level symptoms-index-table__level--<%= symptom.level %>">
+    <span class="glyphicon glyphicon-record"></span>
+  </td>
+  <td>
+    <%= symptom.category %>
+  </td>
+  <td>
+    <%= symptom.emergency %>
+  </td>
+  <td>
+    <%= link_to symptom, method: :delete, remote: true, data: {confirm: t('symptom.views.delete_confirm')}, id: "#{symptom.id}_delete" do%>
+      <span class="glyphicon glyphicon-remove pull-right text-danger"></span>
+    <% end %>
+  </td>
+</tr>

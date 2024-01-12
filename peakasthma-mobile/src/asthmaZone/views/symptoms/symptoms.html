@@ -1,0 +1,31 @@
+<div class="symptoms-view" ng-controller="SymptomsCtrl">
+  <div class="dashboard-header-bar">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <a class="back_btn ion-arrow-left-c" ui-sref="dashboard.root" ui-sref-opts="{ events: ['touchend'] }"></a>
+          <p class="navbar-brand" translate>Symptoms</p>
+        </div>
+    </nav>
+  </div>
+  
+  <div class="symptoms-view-table">
+    <div class="card" ng-repeat="(key, category) in symptoms">
+      <button type="button" class="btn expansion" ng-click="toggleCategory(key)">
+        <span>{{ key }}</span>
+        <span ng-class="expansion_btn(key)? 'ion-ios-arrow-down' : 'ion-ios-arrow-up'"></span>
+      </button>
+      <div ng-show="slected_category.includes(key)">
+        <div ng-repeat="symptom in category" class="symptoms-view-table__row">
+          <label class="symptoms-view-table__cell" ng-class="{ 'symptoms-view-table__cell--selected': selectedSymptoms.includes(symptom) }">
+            <input ng-click="toggleSelect(symptom)" type="checkbox" id="{{ symptom.name }}" name="feature" value="{{ symptom.name }}" />
+            {{ symptom.name }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-info btn-block symptoms-view__next-button" ui-sref="dashboard.root" ng-disabled="selectedSymptoms.length === 0" ng-click="reportSymptoms()"
+    translate>
+    asthmaZone.symptoms.next
+  </button>
+</div>

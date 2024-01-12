@@ -1,0 +1,57 @@
+<table class="table" id="patient-index-table">
+  <thead>
+    <tr>
+      <th>
+        <%= t('patient.model.full_name') %>
+      </th>
+      <th>
+        <%= t('patient.model.height') %>
+      </th>
+      <th>
+        <%= t('patient.model.weight') %>
+      </th>
+      <th>
+        <%= t('patient.model.gender') %>
+      </th>
+      <!-- <th>
+        <%= t('patient.model.race') %>
+      </th>
+      <th>
+        <%= t('patient.model.zip_code') %>
+      </th> -->
+      <th>
+        <%= t('patient.model.updated_at') %>
+      </th>
+      <th>
+        <%= t('user.model.account_status') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @controlPatients.each do |patient| %>
+      <tr>
+        <td>
+          <%= link_to patient.full_name, control_patient_url(patient) %>
+        </td>
+        <td>
+          <%= patient.height_in_feet %>
+        </td>
+        <td>
+          <%= patient.weight_in_pounds %>
+        </td>
+        <td>
+          <%= patient.gender %>
+        </td>
+        <!-- <td>
+          <%= patient.race %>
+        </td> -->
+        <td>
+          <%= l patient.updated_at %>
+        </td>
+        <td>
+          <%= patient.user.disabled ? 'Disabled' : 'Active' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
